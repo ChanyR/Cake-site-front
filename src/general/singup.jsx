@@ -11,20 +11,29 @@ const SignUp = () => {
 
     const navigate = useNavigate();
 
-    const onSubmitSignUp = async (data) => {
-        let url = API_URL + "/users";
-        try {
-            let resp = await apiRequestMethod(url, "POST", data)
-            console.log(resp.data.user)
-            // setUser(resp.data.user)
-            // console.log("token new", resp.data.token);
-            // Cookies.set('token', resp.data.token, { expires: 1 }); // expires in 1 day
-            navigate("/login")
-        }
-        catch (err) {
-            console.log("ERROR ", err);
+   const onSubmitSignUp = async (data) => {
+    let url = API_URL + "/users";
+    try {
+        let resp = await apiRequestMethod(url, "POST", data);
+        console.log("Response Data:", resp.data);
+        navigate("/login");
+    } catch (err) {
+        console.error("Error:", err);
+        if (err.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.error("Response Data:", err.response.data);
+            console.error("Status Code:", err.response.status);
+            console.error("Headers:", err.response.headers);
+        } else if (err.request) {
+            // The request was made but no response was received
+            console.error("No response received:", err.request);
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.error("Error setting up the request:", err.message);
         }
     }
+};
 
     return (<div className="">
         <div>SignUp</div>
