@@ -7,14 +7,15 @@ const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
 };
 
-const DragItem = ({ name, type }) => {
+const DragItem = ({ name, type, image }) => {
   const [, drag] = useDrag({
     type,
-    item: { name },
+    item: { name, image },
   });
 
   return (
     <div ref={drag} className="card" style={{ cursor: 'move', margin: '8px' }}>
+      <img src={image} className="card-img-top" alt={name} />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
       </div>
@@ -22,7 +23,7 @@ const DragItem = ({ name, type }) => {
   );
 };
 
-const DropContainer = ({ onDrop }) => {
+const DropContainer = ({ onDrop, selectedItems }) => {
   const [, drop] = useDrop({
     accept: ItemTypes.CAKE_ITEM,
     drop: (item) => onDrop(item),
@@ -32,6 +33,12 @@ const DropContainer = ({ onDrop }) => {
     <div ref={drop} className="card border-dashed" style={{ height: '200px', padding: '16px' }}>
       <div className="card-body">
         <p className="card-text">Drop here</p>
+        {selectedItems.map((item, index) => (
+          <div key={index} className="mt-2">
+            <img src={item.image} alt={item.name} style={{ marginRight: '5px' }} />
+            {item.name}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -39,20 +46,23 @@ const DropContainer = ({ onDrop }) => {
 
 const DesignCake = () => {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [currentCake, setCurrentCake] = useState([]);
 
   const handleDrop = (item) => {
-    setSelectedItems([...selectedItems, item]);
+    const updatedItems = [...selectedItems, item];
+    setSelectedItems(updatedItems);
+    setCurrentCake(updatedItems);
   };
 
   const cakeBases = [
-    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM },
-    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM },
+    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../images/pexels-anna-nekrashevich-7552321.jpg' },
+    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: 'vanilla.jpg' },
     // Add more cake bases as needed
   ];
 
   const cakeDecorations = [
-    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM },
-    { name: 'Fruits', type: ItemTypes.CAKE_ITEM },
+    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: 'sprinkles.jpg' },
+    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: 'fruits.jpg' },
     // Add more cake decorations as needed
   ];
 
@@ -64,7 +74,7 @@ const DesignCake = () => {
         <div className="row">
           <div className="col-md-6">
             <h3>Cake Bases</h3>
-            <div className="d-flex">
+            <div className="d-flex overflow-hidden w=100 h=100">
               {cakeBases.map((item) => (
                 <DragItem key={item.name} {...item} />
               ))}
@@ -81,12 +91,15 @@ const DesignCake = () => {
           </div>
         </div>
 
-        <DropContainer onDrop={handleDrop} />
+        <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
 
         <div className="mt-4">
           <h3>Your Cake</h3>
-          {selectedItems.map((item, index) => (
-            <p key={index}>{`Selected: ${item.name}`}</p>
+          {currentCake.map((item, index) => (
+            <div key={index} className="mt-2">
+              <img src={item.image} alt={item.name} style={{ marginRight: '5px' }} />
+              {item.name}
+            </div>
           ))}
         </div>
       </div>
