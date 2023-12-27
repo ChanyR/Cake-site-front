@@ -20,8 +20,6 @@ export const apiRequestGet = async (_url) => {
 // For Post,delete, put, patch
 export const apiRequestMethod = async (_url, _method, _body = {}) => {
     try {
-        console.log(_body)
-        console.log(_method);
         console.log(_url);
         let resp = await axios({
             url: _url,

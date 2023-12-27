@@ -12,22 +12,17 @@ const Login = () => {
     const navigate = useNavigate();
 
     const onSubmitLogin = async (data) => {
-        console.log(data);
         let url = API_URL + "/users/login";
         try {
             let resp = await apiRequestMethod(url, "POST", data)
-            if (resp.status === 401 && resp.data.msg == "Email or password is worng, code:1")
-                alert("password or email wrong")//fix
-            else {
-                console.log(resp.data.user)
-                setUser(resp.data.user)
-                console.log("token new", resp.data.token);
-                Cookies.set('token', resp.data.token, { expires: 1 }); // expires in 1 day
-                navigate("/")
-
-            }
+            console.log(resp.data.user)
+            setUser(resp.data.user)
+            console.log("token new", resp.data.token);
+            Cookies.set('token', resp.data.token, { expires: 1 }); // expires in 1 day
+            navigate("/")
         }
         catch (err) {
+            alert("password or email wrong")
             console.log("ERROR ", err);
         }
     }
