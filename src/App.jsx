@@ -26,10 +26,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/*" element={<h2>Page 404</h2>}/>
 
-        {/* ADMIN ROUTES */}
-        {/* {adminRoutes()} */}
         
-        {/* TEST ROUTES */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
      
