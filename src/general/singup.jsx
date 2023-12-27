@@ -34,9 +34,8 @@ const SignUp = () => {
 
     return (
 
-        <div className="border border-danger border-2 w-100" style={}>
-            {/* <img src={backgroundImage} alt="background" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1 }} /> */}
-            <Container component="main" maxWidth="xs" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '100vh' }}>
+        <div className="w-100" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '100vh', zIndex: -1,display:'flex',alignItems:'center' }}>
+            <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Paper elevation={3} style={{ zIndex: 1, padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
                     <Avatar sx={{ m: 1, bgcolor: 'rgba(255, 255, 255, 0.7)' }}>
