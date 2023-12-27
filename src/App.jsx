@@ -1,34 +1,39 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { AppContext } from './context/context'
-import Login from './general/login'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import SignUp from './general/singup'
-import ClientNav from './navbar/clientNav'
+
+import HomeNav from './navbar/homeNav'
+import UserNav from './navbar/userNav'
+import BakerNav from './navbar/bakerNav'
+import AdminNav from './navbar/adminNav'
 import Home from './general/home'
+import SignUp from './general/singup'
+import Login from './general/login'
+import UserHome from './users/userHome'
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
 
   return (
     <BrowserRouter>
       <AppContext.Provider value={{ user, setUser }}>
 
         <Routes>
-          {/* <Route path="/admin/*" element={<HeaderAdmin />} />
-          <Route path="/test/*" element={<HeaderTest />} /> */}
-          <Route path="/*" element={<ClientNav />} />
+          <Route path="/user/*" element={<UserNav/>} />
+          <Route path="/baker/*" element={<BakerNav/>} />
+          <Route path="/admin/*" element={<AdminNav />} />
+          <Route path="/*" element={<HomeNav/>} />
         </Routes>
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/*" element={<h2>Page 404</h2>} />
-
-
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/user" element={<UserHome />} />
+          <Route path="/baker" element={<UserHome />} />
+          <Route path="/admin" element={<UserHome />} />
+          <Route path="/*" element={<h2>Page 404</h2>} />
 
         </Routes>
       </AppContext.Provider>

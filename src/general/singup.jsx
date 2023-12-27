@@ -34,7 +34,7 @@ const SignUp = () => {
 
     return (
 
-        <div className="w-100" style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '100vh', display:'flex',alignItems:'center'}}>
+        <div className="w-100" style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '89vh', display:'flex',alignItems:'center'}}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Paper elevation={3} style={{ zIndex: 1, padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
