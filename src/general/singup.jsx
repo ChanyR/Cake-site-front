@@ -14,17 +14,22 @@ const SignUp = () => {
     const onSubmitSignUp = async (data) => {
         let url = API_URL + "/users";
         try {
-            let resp = await apiRequestMethod(url, "POST", data)
-            console.log(resp.data.user)
-            // setUser(resp.data.user)
-            // console.log("token new", resp.data.token);
-            // Cookies.set('token', resp.data.token, { expires: 1 }); // expires in 1 day
-            navigate("/login")
+            let resp = await apiRequestMethod(url, "POST", data);
+            console.log("Response Data:", resp.data);
+            navigate("/login");
+        } catch (err) {
+            console.error("Error:", err);
+            if (err.response) {
+                console.error("Response Data:", err.response.data);
+                console.error("Status Code:", err.response.status);
+                console.error("Headers:", err.response.headers);
+            } else if (err.request) {
+                console.error("No response received:", err.request);
+            } else {
+                console.error("Error setting up the request:", err.message);
+            }
         }
-        catch (err) {
-            console.log("ERROR ", err);
-        }
-    }
+    };
 
     return (<div className="">
         <div>SignUp</div>

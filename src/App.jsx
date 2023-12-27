@@ -5,6 +5,7 @@ import './App.css'
 import { AppContext } from './context/context'
 import Login from './general/login'
 import { BrowserRouter } from 'react-router-dom'
+import SignUp from './general/singup'
 
 function App() {
   const [user, setUser] = useState([]);
@@ -12,7 +13,8 @@ function App() {
   return (
     <BrowserRouter>
       <AppContext.Provider value={{ user, setUser }}>
-        <Login />
+        {/* <Login /> */}
+        <SignUp/>
       </AppContext.Provider>
     </BrowserRouter>
 
