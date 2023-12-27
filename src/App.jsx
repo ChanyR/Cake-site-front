@@ -11,6 +11,7 @@ import Home from './general/home'
 import SignUp from './general/singup'
 import Login from './general/login'
 import UserHome from './users/userHome'
+import Logout from './general/logout'
 
 function App() {
   const [user, setUser] = useState({});
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/user" element={<UserHome />} />
           <Route path="/baker" element={<UserHome />} />
           <Route path="/admin" element={<UserHome />} />

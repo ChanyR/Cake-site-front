@@ -13,7 +13,7 @@ const UserNav = () => {
           <Button component={Link} to="/user" color="inherit" style={{ textTransform: 'none' }}>
             ההזמנות שלי
           </Button>
-          <Button component={Link} to="/user" color="inherit" style={{ textTransform: 'none' }}>
+          <Button component={Link} to="/logout" color="inherit" style={{ textTransform: 'none' }}>
             יציאה
           </Button>
         </Toolbar>

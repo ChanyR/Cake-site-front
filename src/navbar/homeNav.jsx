@@ -8,10 +8,10 @@ const HomeNav = () => {
         <Container>
           <Toolbar>
             <Button component={Link} to="/login" color="inherit">
-              login
+              כניסה לאזור האישי
             </Button>
-            <Button component={Link} to="/signup" color="inherit">
-            signup
+            <Button component={Link} to="/" color="inherit">
+            דף הבית
             </Button>
 
           </Toolbar>

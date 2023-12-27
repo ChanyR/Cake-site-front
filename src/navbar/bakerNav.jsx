@@ -19,7 +19,7 @@ const BakerNav = () => {
             <Button component={Link} to="/baker" color="inherit" style={{ textTransform: 'none' }}>
               עריכת פרופיל אופה 
             </Button>
-            <Button component={Link} to="/baker" color="inherit" style={{ textTransform: 'none' }}>
+            <Button component={Link} to="/logout" color="inherit" style={{ textTransform: 'none' }}>
               יציאה
             </Button>
           
