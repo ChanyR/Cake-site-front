@@ -15,22 +15,22 @@ function App() {
   return (
     <BrowserRouter>
       <AppContext.Provider value={{ user, setUser }}>
-               
-      <Routes>
-        {/* <Route path="/admin/*" element={<HeaderAdmin />} />
-        <Route path="/test/*" element={<HeaderTest />} /> */}
-        <Route path="/*" element={<ClientNav />} />
-      </Routes>
-      
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/*" element={<h2>Page 404</h2>}/>
 
-        
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-     
-      </Routes>
+        <Routes>
+          {/* <Route path="/admin/*" element={<HeaderAdmin />} />
+        <Route path="/test/*" element={<HeaderTest />} /> */}
+          <Route path="/*" element={<ClientNav />} />
+        </Routes>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/*" element={<h2>Page 404</h2>} />
+
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+
+        </Routes>
       </AppContext.Provider>
     </BrowserRouter>
 
