@@ -13,13 +13,15 @@ import Login from './general/login'
 import UserHome from './users/userHome'
 import Logout from './general/logout'
 
+
 function App() {
   const [user, setUser] = useState({});
+  const [bakers, setBakers] = useState([]);
 
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{ user, setUser }}>
-
+      <AppContext.Provider value={{ user, setUser,bakers,setBakers }}>
+        
         <Routes>
           <Route path="/user/*" element={<UserNav/>} />
           <Route path="/baker/*" element={<BakerNav/>} />
