@@ -34,7 +34,7 @@ const SignUp = () => {
 
     return (
 
-        <div className="border border-danger border-2 w-100" style={{position:'relative',width:'100%',height:'100%',backgroundImage:{backgroundImage},backgroundSize:'cover'}}>
+        <div className="border border-danger border-2 w-100" style={}>
             {/* <img src={backgroundImage} alt="background" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1 }} /> */}
             <Container component="main" maxWidth="xs" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '100vh' }}>
                 <CssBaseline />
