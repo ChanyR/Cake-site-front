@@ -12,6 +12,8 @@ import SignUp from './general/singup'
 import Login from './general/login'
 import UserHome from './users/userHome'
 import Logout from './general/logout'
+import UsersManagement from './admin/usersManagement'
+import BakersManagement from './admin/bakersManagement'
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
           <Route path="/user" element={<UserHome />} />
           <Route path="/baker" element={<UserHome />} />
           <Route path="/admin" element={<UserHome />} />
+          <Route path="/admin/usersManagement" element={<UsersManagement />} />
+          <Route path="/admin/bakersManagement" element={<BakersManagement />} />
           <Route path="/*" element={<h2>Page 404</h2>} />
 
         </Routes>
