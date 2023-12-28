@@ -4,7 +4,7 @@ import { AppContext } from '../context/context';
 import Baker from './baker';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { fetchBakerListData } from '../services/functionService'
+import { fetchBakerListData } from '../services/functionApiService'
 
 const BakerList = () => {
   const { bakers, setBakers } = useContext(AppContext);
