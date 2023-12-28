@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography, CardActions, Button, Grid } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 
 
 const Baker = (props) => {
@@ -24,7 +25,7 @@ const Baker = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-        <FavoriteIcon sx={{ marginRight: '8px' }} />
+        <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} />
           <Button size="small" color="primary">
             View Details
           </Button>
