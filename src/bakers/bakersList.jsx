@@ -4,26 +4,15 @@ import { AppContext } from '../context/context';
 import Baker from './baker';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { fetchBakerListData } from '../services/functionService'
 
 const BakerList = () => {
   const { bakers, setBakers } = useContext(AppContext);
 
-  const fetchData = async () => {
-    let url = API_URL + "/bakers";
-    try {
-      let resp = await apiRequestGet(url);
-      console.log(resp.data);
-      await setBakers(resp.data);
-    } catch (err) {
-      alert("Error fetching data");
-      console.log("ERROR ", err);
-    }
-  };
-
   useEffect(() => {
     console.log('Effect is running');
-    fetchData();
-  }, []); 
+    fetchBakerListData({ bakers, setBakers });
+  }, []);
 
   return (
     <div className="container mt-4 text-center">

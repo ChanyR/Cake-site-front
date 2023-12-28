@@ -14,10 +14,10 @@ const AdminNav = () => {
             <Button component={Link} to="/admin" color="inherit" style={{ textTransform: 'none' }}>
               ההזמנות שלי
             </Button>
-            <Button component={Link} to="/admin" color="inherit" style={{ textTransform: 'none' }}>
+            <Button component={Link} to="/admin/bakersManagement" color="inherit" style={{ textTransform: 'none' }}>
               ניהול אופים
             </Button>
-            <Button component={Link} to="/admin" color="inherit" style={{ textTransform: 'none' }}>
+            <Button component={Link} to="/admin/usersManagement" color="inherit" style={{ textTransform: 'none' }}>
               ניהול משתמשים
             </Button>
             <Button component={Link} to="/logout" color="inherit" style={{ textTransform: 'none' }}>

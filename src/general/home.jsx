@@ -4,22 +4,22 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mx-0 w-100" style={{width:'100%'}}>
       <header className="text-center">
         <h1>Welcome to Sweet Delights</h1>
         <p className="lead">Explore our delightful cake designs for every occasion</p>
       </header>
 
-      <div id="cakeCarousel" className="carousel slide mt-5" data-bs-ride="carousel">
+      <div id="cakeCarousel" className="carousel slide mt-2 " data-bs-ride="carousel" style={{height:'50vh',border:'3px solid red',width:'100%'}}>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="cake1.jpg" className="d-block w-100" alt="Cake 1" />
+            <img src={`../../public/cakes_images/cake2.png`} className="d-block w-100" alt="Cake 1" style={{height:'50vh',border:'3px solid red'}}/>
           </div>
           <div className="carousel-item">
-            <img src="cake2.jpg" className="d-block w-100" alt="Cake 2" />
+            <img src={`../../public/cakes_images/cake3.png`} className="d-block w-100" alt="Cake 2" style={{height:'50vh'}}/>
           </div>
           <div className="carousel-item">
-            <img src="cake3.jpg" className="d-block w-100" alt="Cake 3" />
+            <img src={`../../public/cakes_images/cake1.jpg`} className="d-block w-100" alt="Cake 3" style={{height:'50vh'}}/>
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#cakeCarousel" data-bs-slide="prev">
