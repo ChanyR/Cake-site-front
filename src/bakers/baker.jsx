@@ -8,39 +8,39 @@ import { AppContext } from '../context/context';
 
 
 const Baker = (props) => {
- 
+
   let item = props.item;
-  let handleLikeClick=props.handleLikeClick;
+  let handleLikeClick = props.handleLikeClick;
 
 
-  
 
-//   const [isOpen, setIsOpen] = useState(true);
 
-//   const handleClose = () => {
-//     setIsOpen(false);
-//     if (onClose) {
-//       onClose();
-//     }
-//   };
+  //   const [isOpen, setIsOpen] = useState(true);
 
-// const getBakersDeatels=()=>{
-//   return(
-// <div className={`user-card ${isOpen ? 'open' : 'closed'}`}>
-//       {isOpen && (
-//         <>
-//           <h2>{item.name}</h2>
-//           <p>Email: {item.email}</p>
-//           <p>Likes: {item.likes}</p>
-//           <p>Comments: {item.comments.join(', ')}</p>
-//           <p>Cake Bases: {item.cakeBases.join(', ')}</p>
-//           <p>Cake Decorations: {item.cakeDecorations.join(', ')}</p>
-//           <button onClick={handleClose}>Close</button>
-//         </>
-//       )}
-//     </div>
-//   )
-// }
+  //   const handleClose = () => {
+  //     setIsOpen(false);
+  //     if (onClose) {
+  //       onClose();
+  //     }
+  //   };
+
+  // const getBakersDeatels=()=>{
+  //   return(
+  // <div className={`user-card ${isOpen ? 'open' : 'closed'}`}>
+  //       {isOpen && (
+  //         <>
+  //           <h2>{item.name}</h2>
+  //           <p>Email: {item.email}</p>
+  //           <p>Likes: {item.likes}</p>
+  //           <p>Comments: {item.comments.join(', ')}</p>
+  //           <p>Cake Bases: {item.cakeBases.join(', ')}</p>
+  //           <p>Cake Decorations: {item.cakeDecorations.join(', ')}</p>
+  //           <button onClick={handleClose}>Close</button>
+  //         </>
+  //       )}
+  //     </div>
+  //   )
+  // }
 
   return (
     <Grid item xs={12} md={6}>
@@ -60,21 +60,15 @@ const Baker = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-<<<<<<< HEAD
-        <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} />
-          <Button size="small" color="primary" onClick={getBakersDeatels}>
-=======
-          
-       
+
           <Typography variant="body2" color="text.secondary">
             {item.likes}
           </Typography>
           <Button size="small" color="primary" >
-          <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} onClick={()=>{handleLikeClick(item._id)}} />
-          {/* {console.log(item.likes+1)}; */}
+            <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} onClick={() => { handleLikeClick(item._id) }} />
+            {/* {console.log(item.likes+1)}; */}
           </Button>
           <Button size="small" color="primary">
->>>>>>> 388925e4005b7627049a1dcec9c66c52f9876903
             View Details
           </Button>
         </CardActions>

@@ -44,7 +44,7 @@ const BakersManagement = () => {
 
     return (
         <div className="container mt-5">
-            <h2 className="text-center my-4">Bakers Management</h2>
+            <h2 className="text-center my-4">ניהול אופים</h2>
 
             <ul className="list-group">
                 {bakers.map((baker) => (

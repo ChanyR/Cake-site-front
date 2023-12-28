@@ -29,10 +29,10 @@ const UsersManagement = () => {
         if (userConfirmed) {
             console.log('delete' + userId);
             let resp = await deleteUserApi(userId);
+            await fetchBakerListData({ bakers, setBakers }, true);
+            await fetchUsersListData({ usersList, setUsersList }, true);
             if (resp[0].msg == 'You are not admin') {
                 alert('הנך לא מאושר למחוק משתמש');
-            } else {
-                await fetchUsersListData({ usersList, setUsersList }, true);
             }
         }
     };
@@ -43,7 +43,7 @@ const UsersManagement = () => {
             console.log('promote to baker' + userId);
             await changeUserToBakerApi(userId);
             await fetchUsersListData({ usersList, setUsersList }, true);
-            await fetchBakerListData({bakers,setBakers},true)
+            await fetchBakerListData({ bakers, setBakers }, true)
         }
     };
 
@@ -54,7 +54,7 @@ const UsersManagement = () => {
 
     return (
         <div className="container my-5">
-            <h2 className="text-center mb-4">Users Management</h2>
+            <h2 className="text-center mb-4">ניהול משתמשים</h2>
 
             <ul className="list-group">
                 {usersList.map((user) => (
