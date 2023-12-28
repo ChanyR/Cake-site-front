@@ -34,7 +34,7 @@ const BakersManagement = () => {
                             <span className="mx-4" onClick={()=>editBaker(baker._id)}>
                                 <EditIcon fontSize="small" />
                             </span>
-                            <span onClick={deleteBaker(()=>baker._id)}>
+                            <span onClick={()=>deleteBaker(baker._id)}>
                                 <DeleteIcon fontSize="small" />
                             </span>
                         </div>
