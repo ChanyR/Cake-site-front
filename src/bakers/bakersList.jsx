@@ -38,7 +38,7 @@ const BakerList = () => {
   return (
     <div className="container mt-4 text-center">
       <Typography variant="h4" gutterBottom >
-        Our Bakers
+        האופים שלנו
       </Typography>
       <Grid container spacing={2} justifyContent="flex-start">
         {bakers.map(item => (

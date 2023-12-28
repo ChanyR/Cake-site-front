@@ -69,7 +69,7 @@ const Baker = (props) => {
             {/* {console.log(item.likes+1)}; */}
           </Button>
           <Button size="small" color="primary">
-            View Details
+            פרטים נוספים
           </Button>
         </CardActions>
       </Card>
