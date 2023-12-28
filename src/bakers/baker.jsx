@@ -4,8 +4,37 @@ import { Card, CardContent, Typography, CardActions, Button, Grid } from '@mui/m
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 
 
+
+
 const Baker = (props) => {
   let item = props.item;
+
+//   const [isOpen, setIsOpen] = useState(true);
+
+//   const handleClose = () => {
+//     setIsOpen(false);
+//     if (onClose) {
+//       onClose();
+//     }
+//   };
+
+// const getBakersDeatels=()=>{
+//   return(
+// <div className={`user-card ${isOpen ? 'open' : 'closed'}`}>
+//       {isOpen && (
+//         <>
+//           <h2>{item.name}</h2>
+//           <p>Email: {item.email}</p>
+//           <p>Likes: {item.likes}</p>
+//           <p>Comments: {item.comments.join(', ')}</p>
+//           <p>Cake Bases: {item.cakeBases.join(', ')}</p>
+//           <p>Cake Decorations: {item.cakeDecorations.join(', ')}</p>
+//           <button onClick={handleClose}>Close</button>
+//         </>
+//       )}
+//     </div>
+//   )
+// }
 
   return (
     <Grid item xs={12} md={6}>
@@ -26,7 +55,7 @@ const Baker = (props) => {
         </CardContent>
         <CardActions>
         <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} />
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={getBakersDeatels}>
             View Details
           </Button>
         </CardActions>
