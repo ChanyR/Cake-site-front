@@ -3,24 +3,28 @@ import { AppContext } from '../context/context';
 import Baker from './baker';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { fetchBakerListData,updateBakerLikes } from '../services/functionApiService'
+import { fetchBakerListData, updateBakerLikes, dislikeBaker } from '../services/functionApiService'
 
 const BakerList = () => {
   const { bakers, setBakers } = useContext(AppContext);
-    
-    const handleLikeClick = async(bakerId)=>{
-      await updateBakerLikes(bakerId)
-      await fetchBakerListData({ bakers, setBakers },true);
-  
-     }
-    
+
+  const handleLikeClick = async (bakerId) => {
+    await updateBakerLikes(bakerId)
+    await fetchBakerListData({ bakers, setBakers }, true);
+
+  }
+  const handleDislikeClick = async (bakerId) => {
+    await dislikeBaker(bakerId);
+    await fetchBakerListData({ bakers, setBakers }, true);
+  };
+
   useEffect(() => {
     console.log('Effect is running');
     fetchBakerListData({ bakers, setBakers });
-    
+
   }, []);
 
- 
+
   return (
     <div className="container mt-4 text-center">
       <Typography variant="h4" gutterBottom >
@@ -29,10 +33,11 @@ const BakerList = () => {
       <Grid container spacing={2} justifyContent="flex-start">
         {bakers.map(item => (
           <Grid key={item._id} item xs={12} md={4}>
-            <Baker item={item} handleLikeClick={handleLikeClick} />
+            <Baker item={item} handleLikeClick={handleLikeClick} handleDislikeClick={handleDislikeClick} />
           </Grid>
         ))}
       </Grid>
+
     </div>
   );
 };
