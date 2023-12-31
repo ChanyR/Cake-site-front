@@ -12,6 +12,9 @@ const AdminNav = () => {
               פרופיל
             </Button>
             <Button component={Link} to="/admin" color="inherit" style={{ textTransform: 'none' }}>
+              דף הבית
+            </Button>
+            <Button component={Link} to="/admin" color="inherit" style={{ textTransform: 'none' }}>
               ההזמנות שלי
             </Button>
             <Button component={Link} to="/admin/bakersManagement" color="inherit" style={{ textTransform: 'none' }}>

@@ -19,10 +19,11 @@ import BakersManagement from './admin/bakersManagement'
 function App() {
   const [user, setUser] = useState({});
   const [bakers, setBakers] = useState([]);
+  const [usersList, setUsersList] = useState([]);
 
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{ user, setUser,bakers,setBakers }}>
+      <AppContext.Provider value={{ user, setUser,bakers,setBakers,usersList,setUsersList }}>
         
         <Routes>
           <Route path="/user/*" element={<UserNav/>} />

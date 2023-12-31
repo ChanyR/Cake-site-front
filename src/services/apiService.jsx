@@ -4,6 +4,7 @@ export const API_URL = "http://localhost:3001";
 // export const TOKEN_NAME = "ADMIN_TOKEN";
 
 export const apiRequestGet = async (_url) => {
+    console.log(_url);
     try {
         let resp = await axios.get(_url, {
             headers: {
@@ -21,6 +22,7 @@ export const apiRequestGet = async (_url) => {
 export const apiRequestMethod = async (_url, _method, _body = {}) => {
     try {
         console.log(_url);
+        console.log(_method);
         let resp = await axios({
             url: _url,
             method: _method,
