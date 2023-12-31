@@ -99,3 +99,18 @@ export const changeUserToBakerApi=async(userId)=>{
         console.log("ERROR ", err);
     }
 }
+
+export  const updateBakerLikes = async (bakerId) => {
+    let url = `${API_URL}/bakers/likes/${bakerId}`;
+    let method = 'PUT'
+    try {
+        let resp = await apiRequestMethod(url, method)
+        console.log(resp.data);
+        return resp.data;
+       
+    }
+    catch (err) {
+        alert("Error add like")
+        console.log("ERROR ", err);
+    }
+}
