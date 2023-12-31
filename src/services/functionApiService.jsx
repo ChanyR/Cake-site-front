@@ -114,3 +114,19 @@ export  const updateBakerLikes = async (bakerId) => {
         console.log("ERROR ", err);
     }
 }
+
+
+export  const dislikeBaker = async (bakerId) => {
+    let url = `${API_URL}/bakers/dislike/${bakerId}`;
+    let method = 'PUT'
+    try {
+        let resp = await apiRequestMethod(url, method)
+        console.log(resp.data);
+        return resp.data;
+       
+    }
+    catch (err) {
+        alert("Error dislike")
+        console.log("ERROR ", err);
+    }
+}
