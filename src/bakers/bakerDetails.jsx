@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 
 const BakerDetails = ({ baker, isOpen, onClose }) => {
-  const [bakerDetails, setBakerDetails] = useState({ _id: baker._id, name: baker.name || '', email: baker.email || '', likes: baker.likes.length || '', comments: baker.comments, cake_bases: baker.cake_bases, decoration: baker.decoration });
+  console.log(baker);
+  const [bakerDetails, setBakerDetails] = useState({ _id: baker._id, name: baker.name || '', email: baker.email || '', likes: baker.likes.length || '', comments: baker.comments, cake_bases: baker.cake_bases, cake_decorations: baker.cake_decorations });
 
   const handleSave = () => {
     console.log(bakerDetails);
@@ -52,9 +53,9 @@ const BakerDetails = ({ baker, isOpen, onClose }) => {
           </p>
           <p>
             <strong>Cake Decorations:</strong>{' '}
-            {bakerDetails.decoration && bakerDetails.decoration.length > 0 ? (
-              bakerDetails.decoration.map((decoration, index) => (
-                <span key={index}>{decoration}{index !== bakerDetails.decoration.length - 1 ? ', ' : ''}</span>
+            {bakerDetails.cake_decorations && bakerDetails.cake_decorations.length > 0 ? (
+              bakerDetails.cake_decorations.map((decoration, index) => (
+                <span key={index}>{decoration}{index !== bakerDetails.cake_decorations.length - 1 ? ', ' : ''}</span>
               ))
             ) : 'No cake decorations'}
           </p>
