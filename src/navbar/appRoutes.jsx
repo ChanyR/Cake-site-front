@@ -75,14 +75,14 @@ export default function AppRoutes() {
                         </div>
 
                         <nav className=''>
-                            <Link to="/home/?page=1" className='me-3 btn btn-outline-light' style={{color:'rgb(235, 14, 154)'}}><HomeIcon color="white" />
+                            <Link to="/home/?page=1" className='me-3 btn btn-outline-dark' style={{color:'rgb(235, 14, 154)'}}><HomeIcon color="white" />
                             </Link>
                         </nav>
 
                     </div> :
                     <nav className='container p-4'>
-                        <Link to="/login" className='me-3 btn btn-outline-light'>כניסה לאיזור האישי</Link>
-                        <Link to="/" className='me-3 btn btn-outline-light'><HomeIcon color="white" /></Link>
+                        <Link to="/login" className='me-3 btn btn-outline-dark' style={{color:'rgb(235, 14, 154)'}}>כניסה לאיזור האישי</Link>
+                        <Link to="/" className='me-3 btn btn-outline-dark' style={{color:'rgb(235, 14, 154)'}}><HomeIcon color="white" /></Link>
                     </nav>
                 }
 

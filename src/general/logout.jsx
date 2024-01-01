@@ -10,6 +10,7 @@ const Logout = () => {
 
   useEffect(() => {
     Cookies.remove('token');
+    Cookies.remove('user');
     setUser(null);
     navigate("/");
   })

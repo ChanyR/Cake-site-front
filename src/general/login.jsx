@@ -18,8 +18,8 @@ const Login = () => {
         if (shouldNavigate) {
             console.log("Updated user:", user);
             setUser(user);
+            Cookies.set('user', user, { expires: 1 });
             navigate('/home')
-
         }
     }, [user, shouldNavigate]);
 
