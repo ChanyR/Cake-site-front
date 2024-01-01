@@ -10,16 +10,16 @@ const Home = () => {
         <p className="lead">Explore our delightful cake designs for every occasion</p>
       </header>
 
-      <div id="cakeCarousel" className="carousel slide mt-2 " data-bs-ride="carousel" style={{height:'50vh',border:'3px solid red',width:'100%'}}>
+      <div id="cakeCarousel" className="carousel slide mt-2 " data-bs-ride="carousel" style={{height:'90vh'}}>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src={`../../public/cakes_images/cake2.png`} className="d-block w-100" alt="Cake 1" style={{height:'50vh',border:'3px solid red'}}/>
+            <img src={"../../public/cakes_images/cake flowers.jpeg"} className="d-block w-100" alt="Cake 1" style={{height:'90vh'}}/>
           </div>
           <div className="carousel-item">
-            <img src={`../../public/cakes_images/cake3.png`} className="d-block w-100" alt="Cake 2" style={{height:'50vh'}}/>
+            <img src={"../../public/cakes_images/cake3.jpeg"} className="d-block w-100" alt="Cake 2" style={{height:'90vh'}}/>
           </div>
           <div className="carousel-item">
-            <img src={`../../public/cakes_images/cake1.jpg`} className="d-block w-100" alt="Cake 3" style={{height:'50vh'}}/>
+            <img src={"../../public/cakes_images/cake.jpeg"} className="d-block w-100" alt="Cake 3" style={{height:'80vh'}}/>
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#cakeCarousel" data-bs-slide="prev">
