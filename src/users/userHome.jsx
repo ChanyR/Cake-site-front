@@ -6,8 +6,8 @@ import { fetchData } from '../general/imageGenerator'
 const UserHome = () => {
   return (
     <div className='container w-100'>
-      <button onClick={fetchData}  >fetchData</button>
-
+      <DesignCake />
+      <button onClick={fetchData} className='button button-info'  >הצג הדמיה</button>
       <BakerList />
     </div>
 
