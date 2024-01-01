@@ -35,11 +35,11 @@ export default function AppRoutes() {
     };
     return (
         <div>
-            <header className=' container-fluid sticky-top' style={{ background: "black", height: "80px" }}>
+            <header className=' container-fluid sticky-top' style={{ background: "rgb(239, 222, 225)", height: "80px" }}>
                 {user!=null ?
                     <div className='d-flex justify-content-between align-items-center p-4'>
                         <div>
-                            <Avatar sx={{ bgcolor: "#0D9488", margin: "0", direction: "rtl" }}
+                            <Avatar sx={{ bgcolor: "#eb0e9a", margin: "0", direction: "rtl" }}
                                 id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
                                 aria-haspopup="true"
@@ -57,11 +57,9 @@ export default function AppRoutes() {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none text-black py-2  px-0'><AccountCircleIcon color='turquoise' />פרופיל אישי</Link></MenuItem>
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='text-decoration-none text-black py-2 px-0'><FavoriteBorderIcon color='turquoise' />אופים שמורים</Link></MenuItem>
+                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none text-black py-2  px-0'><AccountCircleIcon color='#rgb(235, 14, 154)' />פרופיל אישי</Link></MenuItem>
+                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='text-decoration-none text-black py-2 px-0'><FavoriteBorderIcon color='#eb0e9a' />אופים שמורים</Link></MenuItem>
                                 <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='text-decoration-none text-black py-2 px-0'><InsertInvitationIcon color='turquoise' />הזמנות שלי</Link></MenuItem>
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/logout" className='text-decoration-none text-black py-2 px-0'><LogoutIcon color='turquoise' />יציאה</Link></MenuItem>
-                                <MenuItem className='bg-dark' onClick={handleClose} dir='rtl' ><img className='me-3' src='https://i.ibb.co/Bs6MHb6/01.png' width={130} /></MenuItem>
                                 {user.role == "baker" &&
                                     <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none text-black py-2  px-0'><AccountCircleIcon color='turquoise' />פרופיל האופה שלי</Link></MenuItem>
                                 }
@@ -69,11 +67,14 @@ export default function AppRoutes() {
                                     <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='text-decoration-none text-black py-2 px-0'><InsertInvitationIcon color='turquoise' />ניהול משתמשים</Link></MenuItem>
                                     <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakersManagement" className='text-decoration-none text-black py-2 px-0'><InsertInvitationIcon color='turquoise' />ניהול אופים</Link></MenuItem>
                                 </>}
+                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/logout" className='text-decoration-none text-black py-2 px-0'><LogoutIcon color='turquoise' />יציאה</Link></MenuItem>
+                                <MenuItem className='bg-dark' onClick={handleClose} dir='rtl' ><img className='me-3' src='https://i.ibb.co/Bs6MHb6/01.png' width={130} /></MenuItem>
+
                             </Menu>
                         </div>
 
                         <nav className=''>
-                            <Link to="/?page=1" className='me-3 btn btn-outline-light'><HomeIcon color="white" />
+                            <Link to="/home/?page=1" className='me-3 btn btn-outline-light'><HomeIcon color="white" />
                             </Link>
                         </nav>
 
