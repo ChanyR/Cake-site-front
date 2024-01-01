@@ -20,7 +20,7 @@ const DragItem = ({ name, type, image }) => {
   const opacity = isDragging ? 0.4 : 1;
 
   return (
-    <div style={{ display: 'inline-block', marginRight: '10px' }}>
+    <div className='container, d-flex' style={{ display: 'inline-block', marginRight: '10px' }}>
       <div ref={drag} className="card" style={{ cursor: 'move', margin: '8px' }}>
         <img src={image} className="card-img-top" alt={name} />
         <div className="card-body">
@@ -38,14 +38,14 @@ const DropContainer = ({ onDrop, selectedItems }) => {
   });
 
   return (
-    <div ref={drop} className="card border-dashed" style={{ minHeight: '200px', padding: '16px' }}>
+    <div ref={drop} className="card border-dashed" style={{ minHeight: '500px', padding: '16px' }}>
       <div className="card-body">
         <p className="card-text">Drop here</p>
         <div className='d-flex'>
         {selectedItems.map((item, index) => (
           <div key={index} className="mt-2 dragging ">
             <img src={item.image} alt={item.name} style={{ marginRight: '5px' ,maxWidth: '100px', maxHeight:'100px'}} />
-            {item.name}
+            {/* {item.name} */}
           </div>
         ))}
         </div>
@@ -71,20 +71,24 @@ const DesignCake = () => {
   ];
 
   const cakeDecorations = [
-    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../images/sprinkles.jpg' },
-    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../images/fruit.jpg' },
+    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../images/Rainbow-Sprinkles.png' },
+    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../images/fruits.jpg' },
+    { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../images/Nuts.png' },
+    { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../images/Candy Canes.png' },
+    { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../images/Mint Leaves.jpeg' },
+    { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../images/Marshmallows.jpeg' },
     // Add more cake decorations as needed
   ];
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="my-container mt-5">
+      <div className="my-container-fluid mt-5">
         <h2 className="mb-4">Design Your Own Cake</h2>
 
         <div className="row">
           <div className="col-md-6">
             <h3>Cake Bases</h3>
-            <div className="d-flex overflow-hidden w=100 h=100">
+            <div className="d-flex flex-wrap overflow-hidden w=100 h=100">
               {cakeBases.map((item) => (
                 <DragItem key={item.name} {...item} />
               ))}
@@ -93,9 +97,12 @@ const DesignCake = () => {
 
           <div className="col-md-6">
             <h3>Cake Decorations</h3>
-            <div className="d-flex">
+            <div className="d-flex flex-wrap" >
+              
               {cakeDecorations.map((item) => (
-                <DragItem key={item.name} {...item} style="background-image: url('item.nameeee.jpg'); background-size: cover; background-position: center; height: 100vh; border:3px solid red;" />
+                <div style={{margin:'4px', width:'150px', height:'150px'}}>
+                <DragItem key={item.name} {...item} style="background-image: url('item.nameeee.jpg'); background-size: cover; background-position: center;  border:3px solid red;" />
+                </div>
               ))}
             </div>
           </div>
