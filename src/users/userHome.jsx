@@ -3,9 +3,16 @@ import BakerList from '../bakers/bakersList'
 import DesignCake from '../general/designCake'
 // import ImageGenerator from '../general/imageGenerator'
 import { fetchData } from '../general/imageGenerator'
-import {startOrder} from './chooseBaker'
+import { useNavigate } from 'react-router'
 
 const UserHome = () => {
+  const navigate = useNavigate();
+
+  const startOrder = () => {
+    console.log("start");
+    navigate("/cake-order")
+  }
+
   return (
     <div className='container w-100'>
       <button onClick={fetchData}  >fetchData</button>

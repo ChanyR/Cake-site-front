@@ -24,13 +24,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{ user, setUser,bakers,setBakers,usersList,setUsersList }}>
-        
+      <AppContext.Provider value={{ user, setUser, bakers, setBakers, usersList, setUsersList }}>
+
         <Routes>
-          <Route path="/user/*" element={<UserNav/>} />
-          <Route path="/baker/*" element={<BakerNav/>} />
+          <Route path="/user/*" element={<UserNav />} />
+          <Route path="/baker/*" element={<BakerNav />} />
           <Route path="/admin/*" element={<AdminNav />} />
-          <Route path="/*" element={<HomeNav/>} />
+          <Route path="/*" element={<HomeNav />} />
         </Routes>
 
         <Routes>
@@ -38,12 +38,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/cake-order" element={<CakeOrdering />} />
           <Route path="/user" element={<UserHome />} />
-          <Route path="/user/cake-order" element={<CakeOrdering />} />
           <Route path="/baker" element={<UserHome />} />
-          <Route path="/baker/cake-order" element={<CakeOrdering />} />
           <Route path="/admin" element={<UserHome />} />
-          <Route path="/admin/cake-order" element={<CakeOrdering />} />
           <Route path="/admin/usersManagement" element={<UsersManagement />} />
           <Route path="/admin/bakersManagement" element={<BakersManagement />} />
           <Route path="/*" element={<h2>Page 404</h2>} />

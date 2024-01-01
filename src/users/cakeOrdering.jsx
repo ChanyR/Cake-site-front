@@ -1,12 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 
-export const startOrder=()=>{
-  const navigate=useNavigate();
-  navigate("/")
-}
-
 const CakeOrdering = () => {
+
+  const navigate = useNavigate();
+
+
   return (
     <div>CakeOrdering</div>
   )
