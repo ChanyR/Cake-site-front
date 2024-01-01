@@ -17,14 +17,9 @@ const Login = () => {
     useEffect(() => {
         if (shouldNavigate) {
             console.log("Updated user:", user);
-            if (user.role === 'admin') {
-                console.log("admin");
-                navigate('/admin')
-            } else if (user.role === "baker") {
-                navigate("/baker")
-            } else {
-                navigate("/user")
-            }
+            setUser(user);
+            navigate('/home')
+
         }
     }, [user, shouldNavigate]);
 
@@ -76,7 +71,7 @@ const Login = () => {
                         )}
                     />
                     <p className="mt-3">
-                        אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline'}}>הרשם</a>
+                        אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline' }}>הרשם</a>
                     </p>
                     <Button
                         type="submit"
@@ -87,7 +82,7 @@ const Login = () => {
                         Login
                     </Button>
                 </form>
-                
+
             </Paper>
         </div>
         // <div className="d-flex align-items-center justify-content-center vh-100">

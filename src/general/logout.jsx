@@ -1,15 +1,18 @@
 import Cookies from 'js-cookie'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router'
+import { AppContext } from '../context/context';
 
 const Logout = () => {
 
-    const navigate=useNavigate();
+  const { user, setUser } = useContext(AppContext);
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        Cookies.remove('token');
-        navigate("/")
-    })
+  useEffect(() => {
+    Cookies.remove('token');
+    setUser(null);
+    navigate("/");
+  })
 
   return (
     <div>Logout</div>
