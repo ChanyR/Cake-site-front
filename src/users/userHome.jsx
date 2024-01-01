@@ -10,9 +10,9 @@ const UserHome = () => {
   const navigate = useNavigate();
 
   const startOrder = async() => {
-    let userInfo=await getUserInfo();
-    console.log(userInfo.role);
-    navigate(`${userInfo.role}/cake-order`);
+    // let userInfo=await getUserInfo();
+    // console.log(userInfo.role);
+    navigate(`/cake-order`);
   }
 
   return (
