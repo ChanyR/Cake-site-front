@@ -15,6 +15,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppContext } from '../context/context';
+import Cookies from 'js-cookie';
 
 export default function AppRoutes() {
     const { user, setUser } = useContext(AppContext);
@@ -22,9 +23,15 @@ export default function AppRoutes() {
     const open = Boolean(anchorEl);
 
     useEffect(() => {
-        console.log(user);
-
+        fetchUser();
     }, []);
+
+    const fetchUser = async () => {
+        if (Cookies.get("user")) {
+            setUser(JSON.parse(Cookies.get("user")));
+            console.log(user);
+        }
+    }
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -36,7 +43,7 @@ export default function AppRoutes() {
     return (
         <div>
             <header className=' container-fluid sticky-top' style={{ background: "rgb(239, 222, 225)", height: "80px" }}>
-                {user!=null ?
+                {user != null ?
                     <div className='d-flex justify-content-between align-items-center p-4'>
                         <div>
                             <Avatar sx={{ bgcolor: "#eb0e9a", margin: "0", direction: "rtl" }}
@@ -58,31 +65,31 @@ export default function AppRoutes() {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none py-2  px-0' style={{color:'rgb(235, 14, 154)'}}><AccountCircleIcon color='turquoise' className="ps-1"/>פרופיל אישי</Link></MenuItem>
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='text-decoration-none py-2 px-0' style={{color:'rgb(235, 14, 154)'}}><FavoriteBorderIcon color='turquoise' className="ps-1"/>אופים שמורים</Link></MenuItem>
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='text-decoration-none py-2 px-0' style={{color:'rgb(235, 14, 154)'}}><InsertInvitationIcon color='turquoise' className="ps-1"/>הזמנות שלי</Link></MenuItem>
+                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none py-2  px-0' style={{ color: 'rgb(235, 14, 154)' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל אישי</Link></MenuItem>
+                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><FavoriteBorderIcon color='turquoise' className="ps-1" />אופים שמורים</Link></MenuItem>
+                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><InsertInvitationIcon color='turquoise' className="ps-1" />הזמנות שלי</Link></MenuItem>
                                 {user.role == "baker" &&
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none py-2 px-0' style={{color:'rgb(235, 14, 154)'}}><AccountCircleIcon color='turquoise' className="ps-1"/>פרופיל האופה שלי</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל האופה שלי</Link></MenuItem>
                                 }
                                 {user.role == "admin" && <>
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='text-decoration-none py-2 px-0' style={{color:'rgb(235, 14, 154)'}}><InsertInvitationIcon color='turquoise' className="ps-1"/>ניהול משתמשים</Link></MenuItem>
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakersManagement" className='text-decoration-none py-2 px-0'style={{color:'rgb(235, 14, 154)'}}><InsertInvitationIcon color='turquoise' className="ps-1"/>ניהול אופים</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול משתמשים</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakersManagement" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול אופים</Link></MenuItem>
                                 </>}
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/logout" className='text-decoration-none py-2 px-0' style={{color:'rgb(235, 14, 154)'}}><LogoutIcon color='turquoise' className="ps-1"/>יציאה</Link></MenuItem>
+                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/logout" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><LogoutIcon color='turquoise' className="ps-1" />יציאה</Link></MenuItem>
                                 <MenuItem className='bg-dark' onClick={handleClose} dir='rtl' ><img className='me-3' src='https://i.ibb.co/Bs6MHb6/01.png' width={130} /></MenuItem>
 
                             </Menu>
                         </div>
 
                         <nav className=''>
-                            <Link to="/home/?page=1" className='me-3 btn btn-outline-dark' style={{color:'rgb(235, 14, 154)'}}><HomeIcon color="white" />
+                            <Link to="/home/?page=1" className='me-3 btn btn-outline-dark' style={{ color: 'rgb(235, 14, 154)' }}><HomeIcon color="white" />
                             </Link>
                         </nav>
 
                     </div> :
                     <nav className='container p-4'>
-                        <Link to="/login" className='me-3 btn btn-outline-dark' style={{color:'rgb(235, 14, 154)'}}>כניסה לאיזור האישי</Link>
-                        <Link to="/" className='me-3 btn btn-outline-dark' style={{color:'rgb(235, 14, 154)'}}><HomeIcon color="white" /></Link>
+                        <Link to="/login" className='me-3 btn btn-outline-dark' style={{ color: 'rgb(235, 14, 154)' }}>כניסה לאיזור האישי</Link>
+                        <Link to="/" className='me-3 btn btn-outline-dark' style={{ color: 'rgb(235, 14, 154)' }}><HomeIcon color="white" /></Link>
                     </nav>
                 }
 

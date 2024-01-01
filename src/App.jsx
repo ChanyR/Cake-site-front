@@ -20,6 +20,7 @@ import UserOrders from './users/userOrders'
 import BakersLike from './users/bakersLike'
 import UserPropile from './users/userPropile'
 import AppRoutes from './navbar/appRoutes'
+import Cookies from 'js-cookie'
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/cake-order" element={<CakeOrdering />} />
           <Route path="/usersManagement" element={<UsersManagement />} />
           <Route path="/bakersManagement" element={<BakersManagement />} />
+          <Route path='/*' element={<NotFound/>}/>
           {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
@@ -64,7 +66,6 @@ function App() {
           <Route path="/admin/usersManagement" element={<UsersManagement />} />
           <Route path="/admin/bakersManagement" element={<BakersManagement />} />
           <Route path="/*" element={<NotFound/>} /> */}
-
         </Routes>
       </AppContext.Provider>
     </BrowserRouter>
