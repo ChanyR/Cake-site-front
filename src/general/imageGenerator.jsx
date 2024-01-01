@@ -14,7 +14,7 @@ export async function fetchData() {
         const response = await axios.post(
             "https://api.openai.com/v1/images/generations",
             {
-                prompt: "a heart shaped chocklate cake with sprinkles  captured from top down view , full view ",
+                prompt: "give me an image of hasidic people dancing in an office",
                 n: 1,
                 size: "512x512",
             },
