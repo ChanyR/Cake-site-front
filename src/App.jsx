@@ -14,6 +14,7 @@ import UserHome from './users/userHome'
 import Logout from './general/logout'
 import UsersManagement from './admin/usersManagement'
 import BakersManagement from './admin/bakersManagement'
+import CakeOrdering from './users/cakeOrdering'
 
 
 function App() {
@@ -38,8 +39,11 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/user" element={<UserHome />} />
+          <Route path="/user/cake-order" element={<CakeOrdering />} />
           <Route path="/baker" element={<UserHome />} />
+          <Route path="/baker/cake-order" element={<CakeOrdering />} />
           <Route path="/admin" element={<UserHome />} />
+          <Route path="/admin/cake-order" element={<CakeOrdering />} />
           <Route path="/admin/usersManagement" element={<UsersManagement />} />
           <Route path="/admin/bakersManagement" element={<BakersManagement />} />
           <Route path="/*" element={<h2>Page 404</h2>} />
