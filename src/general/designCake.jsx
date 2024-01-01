@@ -82,7 +82,7 @@ const DesignCake = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="container-fluid mt-5">
+      <div className="my-container-fluid mt-5">
         <h2 className="mb-4">Design Your Own Cake</h2>
 
         <div className="row">
@@ -107,7 +107,7 @@ const DesignCake = () => {
             </div>
           </div>
         </div>
-        <div className="dragging container">
+        <div className="dragging my-container">
           <DropContainer onDrop={handleDrop} selectedItems={selectedItems}  />
         </div>
         <div className="mt-4">

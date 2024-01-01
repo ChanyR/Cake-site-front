@@ -4,13 +4,15 @@ import DesignCake from '../general/designCake'
 // import ImageGenerator from '../general/imageGenerator'
 import { fetchData } from '../general/imageGenerator'
 import { useNavigate } from 'react-router'
+import { getUserInfo } from '../services/functionApiService'
 
 const UserHome = () => {
   const navigate = useNavigate();
 
-  const startOrder = () => {
-    console.log("start");
-    navigate("/cake-order")
+  const startOrder = async() => {
+    // let userInfo=await getUserInfo();
+    // console.log(userInfo.role);
+    navigate(`/cake-order`);
   }
 
   return (

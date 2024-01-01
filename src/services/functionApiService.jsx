@@ -114,4 +114,15 @@ export  const updateBakerLikes = async (bakerId) => {
     }
 }
 
-
+export const getUserInfo=async()=>{
+    let url=`${API_URL}/users/myInfo`;
+    try{
+        let resp=await apiRequestGet(url);
+        console.log(resp.data);
+        return resp.data;
+    }
+    catch (err) {
+        alert("Error fetching data")
+        console.log("ERROR ", err);
+    }
+}
