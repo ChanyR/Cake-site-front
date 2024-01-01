@@ -14,6 +14,7 @@ import UserHome from './users/userHome'
 import Logout from './general/logout'
 import UsersManagement from './admin/usersManagement'
 import BakersManagement from './admin/bakersManagement'
+import CakeOrdering from './users/cakeOrdering'
 
 
 function App() {
@@ -23,13 +24,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{ user, setUser,bakers,setBakers,usersList,setUsersList }}>
-        
+      <AppContext.Provider value={{ user, setUser, bakers, setBakers, usersList, setUsersList }}>
+
         <Routes>
-          <Route path="/user/*" element={<UserNav/>} />
-          <Route path="/baker/*" element={<BakerNav/>} />
+          <Route path="/user/*" element={<UserNav />} />
+          <Route path="/baker/*" element={<BakerNav />} />
           <Route path="/admin/*" element={<AdminNav />} />
-          <Route path="/*" element={<HomeNav/>} />
+          <Route path="/*" element={<HomeNav />} />
         </Routes>
 
         <Routes>
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/cake-order" element={<CakeOrdering />} />
           <Route path="/user" element={<UserHome />} />
           <Route path="/baker" element={<UserHome />} />
           <Route path="/admin" element={<UserHome />} />
