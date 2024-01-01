@@ -17,6 +17,8 @@ const UserHome = () => {
 
   return (
     <div className='container w-100'>
+      <DesignCake />
+      <button onClick={fetchData} className='button button-info'  >הצג הדמיה</button>
       <button onClick={fetchData}  >fetchData</button>
       <button onClick={startOrder}>התחל הזמנה</button>
       <BakerList />
