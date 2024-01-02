@@ -3,10 +3,7 @@ import './App.css'
 import { AppContext } from './context/context'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import HomeNav from './navbar/homeNav'
-import UserNav from './navbar/userNav'
-import BakerNav from './navbar/bakerNav'
-import AdminNav from './navbar/adminNav'
+
 import Home from './general/home'
 import SignUp from './general/singup'
 import Login from './general/login'
