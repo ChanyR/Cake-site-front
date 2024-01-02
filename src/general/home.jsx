@@ -4,13 +4,27 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className="container mt-5 mx-0 w-100" style={{width:'100%'}}>
+    <div className="container mt-5 mx-0 w-100" style={{ width: '100%' }}>
       <header className="text-center">
         <h1>Welcome to Sweet Delights</h1>
         <p className="lead">Explore our delightful cake designs for every occasion</p>
       </header>
 
-      <div id="cakeCarousel" className="carousel slide mt-2 " data-bs-ride="carousel" style={{height:'90vh'}}>
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../../public/cakes_images/cake flowers.jpeg" class="d-block w-100" alt="..."/>
+          </div>
+          <div class="carousel-item">
+            <img src="../../public/cakes_images/cake3.jpeg" class="d-block w-100" alt="..."/>
+          </div>
+          <div class="carousel-item">
+            <img src="../../public/cakes_images/cake.jpeg" class="d-block w-100" alt="..."/>
+          </div>
+        </div>
+      </div>
+
+      {/* <div id="cakeCarousel" className="carousel slide mt-2 " data-bs-ride="carousel" style={{height:'90vh'}}>
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src={"../../public/cakes_images/cake flowers.jpeg"} className="d-block w-100" alt="Cake 1" style={{height:'90vh'}}/>
@@ -30,7 +44,7 @@ const Home = () => {
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> */}
 
       <section className="row mt-5">
         {/* ... (Card components remain unchanged) */}
