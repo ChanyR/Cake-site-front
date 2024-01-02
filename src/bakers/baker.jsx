@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, CardActions, Button, Grid } from '@mui/material';
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import BakerDetails from './bakerDetails';
+import { useNavigate } from 'react-router-dom';
 
 const Baker = (props) => {
   const { item, handleLikeClick, handleDislikeClick } = props;
   const [selectedBaker, setSelectedBaker] = useState(null);
-
+  const nav = useNavigate();
 
   // const [isOpen, setIsOpen] = useState(false);
   // const [isLiked, setIsLiked] = useState(false);
@@ -56,9 +57,11 @@ const Baker = (props) => {
     );
   };
 
-  const detailsBaker=(bakerId)=>{
+  const detailsBaker = (bakerId) => {
+    nav("./bakerPage")
     console.log("detailes" + bakerId);
     setSelectedBaker(item);
+
   }
 
   return (
@@ -79,15 +82,15 @@ const Baker = (props) => {
           <Button size="small" color="primary" onClick={handleLikeToggle}>
             <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} />
           </Button>
-          <Button size="small" color="primary" onClick={()=>{detailsBaker(item._id)}}>
+          <Button size="small" color="primary" onClick={() => { detailsBaker(item._id) }}>
             פרטים נוספים
           </Button>
-          {selectedBaker != null && <BakerDetails
+          {/* {selectedBaker != null && <BakerDetails
                 baker={selectedBaker}
                 isOpen={!!selectedBaker}
                 onClose={() => setSelectedBaker(null)}
                 
-            />}
+            />} */}
         </CardActions>
         {/* {getBakersDetails()} */}
       </Card>
