@@ -1,8 +1,12 @@
 import React from 'react'
+import Mui from '../general/mui'
 
 const UserPropile = () => {
   return (
-    <div>UserPropile</div>
+    <div>
+      <div>UserPropile</div>
+      <Mui />
+    </div>
   )
 }
 
