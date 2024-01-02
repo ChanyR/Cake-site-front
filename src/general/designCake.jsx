@@ -1,8 +1,11 @@
-// DesignCake.jsx
-import './designCake.css'
 import React, { useState } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { fetchData } from '../general/imageGenerator';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
@@ -17,17 +20,20 @@ const DragItem = ({ name, type, image }) => {
     }),
   });
 
-  const opacity = isDragging ? 0.4 : 1;
-
   return (
-    <div className='container, d-flex' style={{ display: 'inline-block', marginRight: '10px' }}>
-      <div ref={drag} className="card" style={{ cursor: 'move', margin: '8px' }}>
-        <img src={image} className="card-img-top" alt={name} />
-        <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-        </div>
-      </div>
-    </div>
+    <Card ref={drag} className="mb-2" style={{ width: '150px', margin: '8px', cursor: 'move', opacity: isDragging ? 0.4 : 1 }}>
+      <CardMedia
+        component="img"
+        alt={name}
+        height="140"
+        image={image}
+      />
+      <CardContent>
+        <Typography variant="h6" component="div">
+          {name}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -38,16 +44,15 @@ const DropContainer = ({ onDrop, selectedItems }) => {
   });
 
   return (
-    <div ref={drop} className="card border-dashed" style={{ minHeight: '500px', padding: '16px' }}>
+    <div ref={drop} className="card border-dashed mb-2" style={{ width: '500px', minHeight: '100vh', padding: '16px' }}>
       <div className="card-body">
         <p className="card-text">Drop here</p>
-        <div className='d-flex'>
-        {selectedItems.map((item, index) => (
-          <div key={index} className="mt-2 dragging ">
-            <img src={item.image} alt={item.name} style={{ marginRight: '5px' ,maxWidth: '100px', maxHeight:'100px'}} />
-            {/* {item.name} */}
-          </div>
-        ))}
+        <div className="d-flex flex-wrap">
+          {selectedItems.map((item, index) => (
+            <div key={index} className="mt-2 mr-2">
+              <img src={item.image} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -57,6 +62,7 @@ const DropContainer = ({ onDrop, selectedItems }) => {
 const DesignCake = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [currentCake, setCurrentCake] = useState([]);
+  const [imageURL, setImageURL] = useState(null);
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -64,9 +70,18 @@ const DesignCake = () => {
     setCurrentCake(updatedItems);
   };
 
+  const handleShowImage = async () => {
+    try {
+      const imageUrl = await fetchData();
+      setImageURL(imageUrl);
+    } catch (error) {
+      console.error('Error fetching image:', error);
+    }
+  };
+
   const cakeBases = [
-    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../images/' },
-    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: 'vanilla.jpg' },
+    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../images/chocolate.jpg' },
+    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../images/vanilla.jpg' },
     // Add more cake bases as needed
   ];
 
@@ -82,43 +97,57 @@ const DesignCake = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="my-container-fluid mt-5">
+      <div className="container mt-5">
         <h2 className="mb-4">Design Your Own Cake</h2>
 
         <div className="row">
           <div className="col-md-6">
-            <h3>Cake Bases</h3>
-            <div className="d-flex flex-wrap overflow-hidden w=100 h=100">
-              {cakeBases.map((item) => (
-                <DragItem key={item.name} {...item} />
-              ))}
-            </div>
+            <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
           </div>
 
           <div className="col-md-6">
-            <h3>Cake Decorations</h3>
-            <div className="d-flex flex-wrap" >
-              
-              {cakeDecorations.map((item) => (
-                <div style={{margin:'4px', width:'150px', height:'150px'}}>
-                <DragItem key={item.name} {...item} style="background-image: url('item.nameeee.jpg'); background-size: cover; background-position: center;  border:3px solid red;" />
+            <div className="row">
+              <div className="col-md-4">
+                <h3>Cake Bases</h3>
+                <div className="d-flex flex-wrap">
+                  {cakeBases.map((item) => (
+                    <DragItem key={item.name} {...item} />
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="col-md-8">
+                <h3>Cake Decorations</h3>
+                <div className="d-flex flex-wrap">
+                  {cakeDecorations.map((item) => (
+                    <DragItem key={item.name} {...item} />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="dragging my-container">
-          <DropContainer onDrop={handleDrop} selectedItems={selectedItems}  />
-        </div>
+
         <div className="mt-4">
           <h3>Your Cake</h3>
           {currentCake.map((item, index) => (
-            <div key={index} className="mt-2" >
-              {/* <img src={item.image} alt={item.name} style={{ marginRight: '5px' }} /> */}
+            <div key={index} className="mt-2">
               {item.name}
             </div>
           ))}
         </div>
+
+        <button onClick={handleShowImage} className='button button-info'>הצג הדמיה</button>
+        <br></br>
+
+        {imageURL && (
+          <div className="mt-4">
+            <h3>Generated Image</h3>
+            <div className="mt-2">
+              <img src={imageURL} alt="Generated Image" style={{ maxWidth: '200px', maxHeight: '200px' }} />
+            </div>
+          </div>
+        )}
       </div>
     </DndProvider>
   );

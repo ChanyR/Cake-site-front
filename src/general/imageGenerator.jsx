@@ -1,13 +1,4 @@
 import axios from "axios";
-// import OpenAi,{OpenAIApi, Configuration} from "openai"
-
-// const conf = new Configuration({
-//     apiKey: import.meta.env.VITE_MY_API_KEY
-// })
-
-// const openai = new OpenAIApi(conf)
-// //     apiKey: import.meta.env.VITE_MY_API_KEY
-// // });
 
 export async function fetchData() {
     try {
@@ -24,13 +15,31 @@ export async function fetchData() {
                     Authorization: `Bearer ${import.meta.env.VITE_MY_API_KEY} `,
                     "User-Agent": "Chrome"
                 }
-            },
+            }
+        );
 
-        )
+        // Extracting the image URL from the response
+        const imageUrl = response.data && response.data.data && response.data.data[0] && response.data.data[0].url;
 
-        console.log(response);
-    }
-    catch (e) {
-        console.log(e);
+        // Creating a div element
+        const imageContainer = document.createElement('div');
+
+        // Creating an img element
+        const imageElement = document.createElement('img');
+        imageElement.src = imageUrl;
+
+        // Appending the img element to the div
+        imageContainer.appendChild(imageElement);
+
+        // Logging the image URL and returning the div
+        console.log(imageUrl);
+        return imageContainer;
+    } catch (e) {
+        console.error(e);
+        throw e; // Rethrow the error if needed
     }
 }
+
+// Example usage:
+// const imageDiv = await fetchData();
+// document.body.appendChild(imageDiv); // Append the div to the document body or another container
