@@ -19,6 +19,7 @@ import UserPropile from './users/userPropile'
 import AppRoutes from './navbar/appRoutes'
 import Cookies from 'js-cookie'
 import BakerPage from './bakers/bakerPage'
+import ForgetPassword from './users/forgetPassword'
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/usersManagement" element={<UsersManagement />} />
           <Route path="/bakersManagement" element={<BakersManagement />} />
           <Route path="/bakerPage" element={<BakerPage />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path='/*' element={<NotFound/>}/>
           {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

@@ -70,9 +70,14 @@ const Login = () => {
                                     ""
                         )}
                     />
-                    <p className="mt-3">
-                        אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline' }}>הרשם</a>
-                    </p>
+                    <div className="d-flex mt-3 justify-content-xl-between">
+                        <p>
+                            <a href="/forgetPassword" style={{ textDecoration: 'underline' }}>שכחתי סיסמא</a>
+                        </p>
+                        <p>
+                            אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline' }}>הרשם</a>
+                        </p>
+                    </div>
                     <Button
                         type="submit"
                         fullWidth

@@ -69,7 +69,7 @@
 // export default Home;
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'Bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
   return (

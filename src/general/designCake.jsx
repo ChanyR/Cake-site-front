@@ -80,18 +80,18 @@ const DesignCake = () => {
   };
 
   const cakeBases = [
-    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../images/chocolate.jpg' },
-    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../images/vanilla.jpg' },
+    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
+    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
     // Add more cake bases as needed
   ];
 
   const cakeDecorations = [
-    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../images/Rainbow-Sprinkles.png' },
-    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../images/fruits.jpg' },
-    { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../images/Nuts.png' },
-    { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../images/Candy Canes.png' },
-    { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../images/Mint Leaves.jpeg' },
-    { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../images/Marshmallows.jpeg' },
+    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
+    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
+    { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
+    { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
+    { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
+    { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
     // Add more cake decorations as needed
   ];
 
