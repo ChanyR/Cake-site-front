@@ -4,6 +4,7 @@ import { AppContext } from './context/context'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
+
 import Home from './general/home'
 import SignUp from './general/singup'
 import Login from './general/login'
@@ -23,6 +24,8 @@ import BakerImage from './bakers/bakerImage'
 
 
 function App() {
+
+  
   const [user, setUser] = useState(null);
   const [bakers, setBakers] = useState([]);
   const [usersList, setUsersList] = useState([]);
