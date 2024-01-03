@@ -1,4 +1,5 @@
-// Import necessary libraries and components
+// DesignCake.jsx
+
 import React, { useState } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -8,12 +9,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { fetchData } from '../general/imageGenerator';
 
-// Define item types for drag and drop
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
 };
 
-// Define the DragItem component for cake items
 const DragItem = ({ name, type, image }) => {
   const [{ isDragging }, drag, preview] = useDrag({
     type,
@@ -40,7 +39,6 @@ const DragItem = ({ name, type, image }) => {
   );
 };
 
-// Define the DropContainer component for the drop area
 const DropContainer = ({ onDrop, selectedItems }) => {
   const [, drop] = useDrop({
     accept: ItemTypes.CAKE_ITEM,
@@ -63,31 +61,27 @@ const DropContainer = ({ onDrop, selectedItems }) => {
   );
 };
 
-// Define the DesignCake component
 const DesignCake = () => {
-  // State for selected items, current cake, and generated image URL
   const [selectedItems, setSelectedItems] = useState([]);
   const [currentCake, setCurrentCake] = useState([]);
   const [imageURL, setImageURL] = useState(null);
 
-  // Handle the drop event for cake items
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
     setSelectedItems(updatedItems);
     setCurrentCake(updatedItems);
   };
 
-  // Fetch and set the generated image URL
   const handleShowImage = async () => {
     try {
-      const imageUrl = await fetchData();
+      const prompt = selectedItems.map((item) => item.name).join(' ');
+      const imageUrl = await fetchData(prompt);
       setImageURL(imageUrl);
     } catch (error) {
       console.error('Error fetching image:', error);
     }
   };
 
-  // Define cake bases and cake decorations
   const cakeBases = [
     { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
     { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
@@ -104,7 +98,6 @@ const DesignCake = () => {
     // Add more cake decorations as needed
   ];
 
-  // Render the DesignCake component
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="container mt-5">
@@ -150,7 +143,6 @@ const DesignCake = () => {
         <button onClick={handleShowImage} className='button button-info'>הצג הדמיה</button>
         <br></br>
 
-        {/* Render the generated image if imageURL is available */}
         {imageURL && (
           <div className="mt-4">
             <h3>Generated Image</h3>
@@ -164,5 +156,4 @@ const DesignCake = () => {
   );
 };
 
-// Export the DesignCake component
 export default DesignCake;
