@@ -53,6 +53,7 @@ function App() {
           <Route path="/usersManagement" element={<UsersManagement />} />
           <Route path="/bakersManagement" element={<BakersManagement />} />
           <Route path="/bakerPage" element={<BakerPage />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path='/*' element={<NotFound/>}/>
           {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
