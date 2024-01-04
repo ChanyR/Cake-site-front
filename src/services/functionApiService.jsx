@@ -168,3 +168,29 @@ export const isExistEmailInDB=async(email)=>{
         console.log("ERROR: ", err);
     }
 }
+
+export const decorationList=async()=>{
+    let url=`${API_URL}/decorations`;
+    try{
+        let resp=await apiRequestGet(url);
+        console.log(resp.data)
+        return resp.data;
+    }
+    catch(err){
+        alert("Error fetch data");
+        console.log("ERROR: ", err);
+    }
+}
+
+export const basesList=async()=>{
+    let url=`${API_URL}/bases`;
+    try{
+        let resp=await apiRequestGet(url);
+        console.log(resp.data)
+        return resp.data;
+    }
+    catch(err){
+        alert("Error fetch data");
+        console.log("ERROR: ", err);
+    }
+}

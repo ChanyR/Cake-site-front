@@ -1,12 +1,12 @@
 import React from 'react'
 import { PayPalButton } from "react-paypal-button-v2"
-import Paypal from '../general/paypal';
+import DesignCake from '../general/designCake'
 
 const UserOrders = () => {
   return (
     <div>
-      <div>UserOrders</div>
-      <Paypal/>
+      {/* <div>UserOrders</div> */}
+      <DesignCake/>
     </div>
   )
 }
