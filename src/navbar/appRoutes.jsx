@@ -43,11 +43,19 @@ export default function AppRoutes() {
     };
     return (
         <div>
-            <header className=' container-fluid sticky-top ' style={{  height: "80px" }}>
+            
+            
+            <header className=' ccontainer-fluid sticky-top ' style={{  height: "80px", zIndex: 1000 }} >
+                
                 {user != null ?
                     <div className='d-flex justify-content-between align-items-center p-4' data-user-set-bg="#ffffff">
+                        
                         <div>
-
+                        {/* <a id="logo" href="https://theboutiquecake.com" data-supplied-ml-starting-dark="false" data-supplied-ml-starting="false" data-supplied-ml="true">
+            <img class="stnd skip-lazy default-logo" width="500" height="213" alt="The Boutique Cake"
+                src="https://res.cloudinary.com/dwwvof9x3/image/upload/v1704410403/%D7%98%D7%A7%D7%A1%D7%98_%D7%94%D7%A4%D7%A1%D7%A7%D7%94_%D7%A9%D7%9C%D7%9A_2_jwirhj.png"/>
+                
+                </a> */}
                             <Avatar sx={{ bgcolor: "#eb0e9a", margin: "0", direction: "rtl" }}
                                 id="basic-button"
                                 aria-controls={open ? 'basic-menu' : undefined}
@@ -92,9 +100,10 @@ export default function AppRoutes() {
 
                     </div> :
                     <nav className='container p-4'>
+                        
                         {/* <Link to="/login" className='me-3 btn btn-outline-dark' style={{ color: 'silver' }}>כניסה לאיזור האישי</Link> */}
                         <Link to="/login" className='me-3 ' >< PersonIcon style={{ color: 'silver' }}/></Link>
-                        <Link to="/" className='me-3 btn btn-outline-dark' style={{ color: 'silver' }}><HomeIcon color="white" /></Link>
+                        <Link to="/" className='me-3 ' style={{ color: 'silver' }}><HomeIcon color="white" /></Link>
                     </nav>
                 }
 
