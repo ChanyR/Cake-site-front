@@ -114,4 +114,57 @@ export  const updateBakerLikes = async (bakerId) => {
     }
 }
 
+export const getUserInfo=async()=>{
+    let url=`${API_URL}/users/myInfo`;
+    try{
+        let resp=await apiRequestGet(url);
+        console.log(resp.data);
+        return resp.data;
+    }
+    catch (err) {
+        alert("Error fetching data")
+        console.log("ERROR: ", err);
+    }
+}
 
+
+
+export const sendEmail=async(email)=>{
+    let url=`${API_URL}/users/sendEmail`;
+    let body={"to":email};
+    try{
+        let resp=await apiRequestMethod(url,"POST",body);
+        console.log(resp.data)
+        return resp.data;
+    }
+    catch(err){
+        alert("Error send email");
+        console.log("ERROR: ", err);
+    }
+}
+
+export const resetPassowrd=async(body)=>{
+    let url=`${API_URL}/users/resetPassword`;
+    try{
+        let resp=await apiRequestMethod(url,"PATCH",body);
+        console.log(resp.data)
+        return resp.data;
+    }
+    catch(err){
+        alert("Error reset passowrd");
+        console.log("ERROR: ", err);
+    }
+}
+
+export const isExistEmailInDB=async(email)=>{
+    let url=`${API_URL}/users/isExistEmail/${email}`;
+    try{
+        let resp=await apiRequestGet(url);
+        console.log(resp.data)
+        return resp.data;
+    }
+    catch(err){
+        alert("Error chack is exist email");
+        console.log("ERROR: ", err);
+    }
+}

@@ -11,8 +11,11 @@ import backgroundImage from '../assets/pexels-andrea-piacquadio-3756050.jpg';
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    let imageUrl = "no image"
+
 
     const onSubmitSignUp = async (data) => {
+        data = {...data, image:imageUrl}
         let url = API_URL + "/users";
         try {
             let resp = await apiRequestMethod(url, "POST", data);
@@ -31,10 +34,11 @@ const SignUp = () => {
             }
         }
     };
+    
 
     return (
 
-        <div className="w-100" style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '89vh', display:'flex',alignItems:'center'}}>
+        <div className="w-100" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '89vh', display: 'flex', alignItems: 'center' }}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Paper elevation={3} style={{ zIndex: 1, padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
@@ -77,7 +81,9 @@ const SignUp = () => {
                                     errors.password.type === 'minLength' ? "Password must be at least 6 characters long" :
                                         "Password must contain at least one uppercase letter, one number, and one special character"
                             )}
+
                         />
+                       
                         <Button
                             type="submit"
                             fullWidth

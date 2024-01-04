@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, CardContent, Typography, CardActions, Button, Grid } from '@mui/material';
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import BakerDetails from './bakerDetails';
+import { useNavigate } from 'react-router-dom';
+import DesignCake from '../general/designCake';
+import { AppContext } from '../context/context';
 
 const Baker = (props) => {
   const { item, handleLikeClick, handleDislikeClick } = props;
+  const {activeStep, setActiveStep} = useContext(AppContext);
   const [selectedBaker, setSelectedBaker] = useState(null);
+  const { chosenBaker, setChosenBaker } = useContext(AppContext);
 
+  const nav = useNavigate();
 
   // const [isOpen, setIsOpen] = useState(false);
   // const [isLiked, setIsLiked] = useState(false);
@@ -56,13 +62,23 @@ const Baker = (props) => {
     );
   };
 
-  const detailsBaker=(bakerId)=>{
+  const detailsBaker = (bakerId) => {
+    nav(`/bakerPage`)
     console.log("detailes" + bakerId);
     setSelectedBaker(item);
+
+  }
+
+  const startOrder = (baker) => {
+    // let userInfo=await getUserInfo();
+    // console.log(userInfo.role);
+    setChosenBaker(baker);
+    setActiveStep(1);
+    nav(`/cake-order`);
   }
 
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={8}>
       <Card sx={{ width: '100%', backgroundColor: "#f2f2f2", height: '100%' }}>
         <CardContent>
           <Typography variant="h6" gutterBottom>
@@ -79,15 +95,21 @@ const Baker = (props) => {
           <Button size="small" color="primary" onClick={handleLikeToggle}>
             <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} />
           </Button>
-          <Button size="small" color="primary" onClick={()=>{detailsBaker(item._id)}}>
+          <Button size="small" color="primary" onClick={() => { detailsBaker(item._id) }}>
             פרטים נוספים
           </Button>
-          {selectedBaker != null && <BakerDetails
+
+          <Button size="small" color="primary" onClick={()=>startOrder(item)}>
+            בחירת קונדיטור
+          </Button>
+
+
+          {/* {selectedBaker != null && <BakerDetails
                 baker={selectedBaker}
                 isOpen={!!selectedBaker}
                 onClose={() => setSelectedBaker(null)}
                 
-            />}
+            />} */}
         </CardActions>
         {/* {getBakersDetails()} */}
       </Card>

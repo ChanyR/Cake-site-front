@@ -1,0 +1,12 @@
+.dragging{
+
+}
+
+.my-container{
+    width:700px;
+    overflow: hidden;
+    }
+
+    .container-fluid{
+        min-width: 900px;
+    }

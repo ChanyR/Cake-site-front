@@ -4,27 +4,37 @@ import { useForm } from 'react-hook-form';
 import { API_URL, apiRequestMethod } from '../services/apiService';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/context';
-import { Avatar, Button, Container, CssBaseline, Paper, TextField, Typography } from '@mui/material';
+import { Avatar, Button, Container, CssBaseline, InputLabel, Paper, TextField, Typography } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import IconButton from '@mui/material/IconButton';
+import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, getValues } = useForm();
+    
     const { user, setUser } = useContext(AppContext);
 
     const [shouldNavigate, setShouldNavigate] = useState(false);
     const navigate = useNavigate();
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
     useEffect(() => {
         if (shouldNavigate) {
             console.log("Updated user:", user);
-            if (user.role === 'admin') {
-                console.log("admin");
-                navigate('/admin')
-            } else if (user.role === "baker") {
-                navigate("/baker")
-            } else {
-                navigate("/user")
-            }
+            setUser(user);
+            Cookies.set('user', JSON.stringify(user), { expires: 1 });
+            navigate('/home')
         }
     }, [user, shouldNavigate]);
 
@@ -62,7 +72,7 @@ const Login = () => {
                         error={Boolean(errors.email)}
                         helperText={errors.email && "Email is required and must be a valid email address"}
                     />
-                    <TextField
+                    {/* <TextField
                         {...register('password', { required: true, minLength: 6 })}
                         margin="normal"
                         fullWidth
@@ -74,10 +84,51 @@ const Login = () => {
                                 errors.password.type === 'minLength' ? "Password must be at least 6 characters long" :
                                     ""
                         )}
-                    />
-                    <p className="mt-3">
-                        אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline'}}>הרשם</a>
-                    </p>
+                    /> */}
+                    <FormControl fullWidth variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                        <OutlinedInput
+                            {...register('password', { required: true, minLength: 6 })}
+                            id="outlined-adornment-password"
+                            margin="normal"
+                            fullWidth
+                            label="Password"
+                            dir="ltr"
+                            type={showPassword ? 'text' : 'password'}
+                            error={Boolean(errors.password)}
+                            helperText={errors.password && (
+                                errors.password.type === 'required' ? "Password is required" :
+                                    errors.password.type === 'minLength' ? "Password must be at least 6 characters long" :
+                                        ""
+                            )}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                    >
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            }
+                        />
+                        <p style={{direction:"ltr", color:"red"}}>{errors.password && (
+                            errors.password.type === 'required' ? "Password is required" :
+                                errors.password.type === 'minLength' ? "Password must be at least 6 characters long" :
+                                    ""
+                        )}</p>
+                    </FormControl>
+
+                    <div className="d-flex mt-3 justify-content-xl-between">
+                        <p>
+                            <a href="/forgetPassword" style={{ textDecoration: 'underline' }}>שכחתי סיסמא</a>
+                        </p>
+                        <p>
+                            אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline' }}>הרשם</a>
+                        </p>
+                    </div>
                     <Button
                         type="submit"
                         fullWidth
@@ -87,7 +138,7 @@ const Login = () => {
                         Login
                     </Button>
                 </form>
-                
+
             </Paper>
         </div>
         // <div className="d-flex align-items-center justify-content-center vh-100">
