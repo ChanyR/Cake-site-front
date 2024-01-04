@@ -14,7 +14,7 @@ const HomeNav = () => {
             דף הבית
             </Button>
 
-          </Toolbar>
+          </Toolbar> 
         </Container>
       </AppBar>
       

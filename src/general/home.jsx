@@ -74,26 +74,26 @@ import 'Bootstrap/dist/css/bootstrap.min.css';
 const Home = () => {
   return (
     <div className="container mt-5 mx-0 w-100" style={{ width: '100%' }}>
-      <header className="text-center">
+      {/* <header className="text-center">
         <h1>Welcome to Sweet Delights</h1>
         <p className="lead">Explore our delightful cake designs for every occasion</p>
-      </header>
+      </header> */}
 
       <Carousel interval={5000} pause={false}>
         <Carousel.Item>
-          <img src="../../public/cakes_images/cake flowers.jpeg" className="d-block w-100" alt="Cake 1" />
+          <img src="../../public/cakes_images/cake6.jpg" className="d-block w-100" alt="Cake 1" />
         </Carousel.Item>
         <Carousel.Item>
-          <img src="../../public/cakes_images/cake3.jpeg" className="d-block w-100" alt="Cake 2" />
+          <img src="../../public/cakes_images/cake7.jpg" className="d-block w-100" alt="Cake 2" />
         </Carousel.Item>
         <Carousel.Item>
-          <img src="../../public/cakes_images/cake.jpeg" className="d-block w-100" alt="Cake 3" />
+          <img src="../../public/cakes_images/cake8.jpg" className="d-block w-100" alt="Cake 3" />
         </Carousel.Item>
       </Carousel>
 
-      <section className="row mt-5">
-        {/* ... (Card components remain unchanged) */}
-      </section>
+      {/* <section className="row mt-5">
+        ... (Card components remain unchanged)
+      </section> */}
 
       <section className="mt-5">
         <h2 className="text-center">About Us</h2>
