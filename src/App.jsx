@@ -4,6 +4,7 @@ import { AppContext } from './context/context'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
+
 import Home from './general/home'
 import SignUp from './general/singup'
 import Login from './general/login'
@@ -24,6 +25,8 @@ import ForgetPassword from './users/forgetPassword'
 
 
 function App() {
+
+  
   const [user, setUser] = useState(null);
   const [bakers, setBakers] = useState([]);
   const [usersList, setUsersList] = useState([]);
@@ -53,6 +56,7 @@ function App() {
           <Route path="/usersManagement" element={<UsersManagement />} />
           <Route path="/bakersManagement" element={<BakersManagement />} />
           <Route path="/bakerPage" element={<BakerPage />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path='/*' element={<NotFound/>}/>
           {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
