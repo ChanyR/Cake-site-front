@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, CardContent, Typography, CardActions, Button, Grid } from '@mui/material';
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import BakerDetails from './bakerDetails';
 import { useNavigate } from 'react-router-dom';
+import DesignCake from '../general/designCake';
+import { AppContext } from '../context/context';
 
 const Baker = (props) => {
   const { item, handleLikeClick, handleDislikeClick } = props;
   const [selectedBaker, setSelectedBaker] = useState(null);
+  const { chosenBaker, setChosenBaker } = useContext(AppContext);
+
   const nav = useNavigate();
 
   // const [isOpen, setIsOpen] = useState(false);
@@ -58,10 +62,21 @@ const Baker = (props) => {
   };
 
   const detailsBaker = (bakerId) => {
-    nav("./bakerPage")
+    nav(`/bakerPage`)
     console.log("detailes" + bakerId);
     setSelectedBaker(item);
 
+  }
+
+  const chooseBaker = () => {
+
+  }
+
+  const startOrder = (baker) => {
+    // let userInfo=await getUserInfo();
+    // console.log(userInfo.role);
+    setChosenBaker(baker);
+    nav(`/cake-order`);
   }
 
   return (
@@ -85,6 +100,12 @@ const Baker = (props) => {
           <Button size="small" color="primary" onClick={() => { detailsBaker(item._id) }}>
             פרטים נוספים
           </Button>
+
+          <Button size="small" color="primary" onClick={startOrder(item)}>
+            בחירת קונדיטור
+          </Button>
+
+
           {/* {selectedBaker != null && <BakerDetails
                 baker={selectedBaker}
                 isOpen={!!selectedBaker}
