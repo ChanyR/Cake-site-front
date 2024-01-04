@@ -22,6 +22,7 @@ import Cookies from 'js-cookie'
 import BakerPage from './bakers/bakerPage'
 import BakerImage from './bakers/bakerImage'
 import ForgetPassword from './users/forgetPassword'
+import BakerProfile from './bakers/bakerProfile'
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
           <Route path="/bakersManagement" element={<BakersManagement />} />
           <Route path="/bakerPage" element={<BakerPage />} />
           <Route path="/forgetPassword" element={<ForgetPassword />} />
+          <Route path="/bakerProfile" element={<BakerProfile />} />
           <Route path='/*' element={<NotFound/>}/>
           {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

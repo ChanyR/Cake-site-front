@@ -69,7 +69,7 @@ export default function AppRoutes() {
                                 <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><FavoriteBorderIcon color='turquoise' className="ps-1" />אופים שמורים</Link></MenuItem>
                                 <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><InsertInvitationIcon color='turquoise' className="ps-1" />הזמנות שלי</Link></MenuItem>
                                 {user.role == "baker" &&
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל האופה שלי</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakerProfile" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל האופה שלי</Link></MenuItem>
                                 }
                                 {user.role == "admin" && <>
                                     <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='text-decoration-none py-2 px-0' style={{ color: 'rgb(235, 14, 154)' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול משתמשים</Link></MenuItem>
