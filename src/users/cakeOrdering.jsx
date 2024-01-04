@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import Box from '@mui/material/Box';
@@ -12,6 +12,7 @@ import DesignCake from '../general/designCake'
 import Paypal from '../general/paypal';
 import BakerList from '../bakers/bakersList';
 import { AppContext } from '../context/context';
+import { Alert } from '@mui/material';
 
 const steps = ['בחירת אופה', 'עצב עוגה כרצונך', 'תשלום'];
 
@@ -19,35 +20,33 @@ const CakeOrdering = () => {
 
   const navigate = useNavigate();
 
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
+  const {activeStep, setActiveStep} = useContext(AppContext);
+  const [alertMsg, setAlertMsg] = useState(false);
 
-  useEffect(()=>{
-    if(chosenBaker==null){
+  useEffect(() => {
+    setAlertMsg(false);
+    if (chosenBaker == null) {
       setActiveStep(0);
     }
-  })
+  }, [chosenBaker])
 
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
+    if (activeStep == 0 && chosenBaker == null) {
+      setAlertMsg(true);
     }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+    else {
+      setAlertMsg(false);
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
   };
 
   const handleBack = () => {
-    if(activeStep==1){
+    if (activeStep == 1) {
       setChosenBaker(null)
     }
+    setAlertMsg(false);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -63,10 +62,6 @@ const CakeOrdering = () => {
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
-
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
             return (
               <Step key={label} {...stepProps}>
                 <StepLabel {...labelProps}>{label}</StepLabel>
@@ -88,7 +83,7 @@ const CakeOrdering = () => {
         ) : (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
-              Step {activeStep + 1}
+              {alertMsg && <Alert severity="error" style={{ marginBottom: '10px' }}>{activeStep == 0 && <p>בחר אופה</p>}</Alert>}
               {activeStep == 0 && <BakerList />}
               {activeStep == 1 && <DesignCake />}
               {activeStep == 2 && <Paypal />}
