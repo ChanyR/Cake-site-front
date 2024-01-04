@@ -1,5 +1,3 @@
-// DesignCake.jsx
-
 import React, { useContext, useState } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -9,6 +7,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
+import Modal from './model'; // Assuming the Modal component is in the same directory
+import './designCake.css';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
@@ -24,13 +24,17 @@ const DragItem = ({ name, type, image }) => {
   });
 
   return (
-    <Card ref={drag} className="mb-2" style={{ width: '150px', margin: '8px', cursor: 'move', opacity: isDragging ? 0.4 : 1 }}>
-      <CardMedia
-        component="img"
-        alt={name}
-        height="140"
-        image={image}
-      />
+    <Card
+      ref={drag}
+      className="mb-2"
+      sx={{
+        width: 150,
+        margin: 2,
+        cursor: 'move',
+        opacity: isDragging ? 0.4 : 1,
+      }}
+    >
+      <CardMedia component="img" alt={name} height="140" image={image} />
       <CardContent>
         <Typography variant="h6" component="div">
           {name}
@@ -47,7 +51,11 @@ const DropContainer = ({ onDrop, selectedItems }) => {
   });
 
   return (
-    <div ref={drop} className="card border-dashed mb-2" style={{ width: '500px', minHeight: '100vh', padding: '16px' }}>
+    <div
+      ref={drop}
+      className="card border-dashed mb-2  choose-erea"
+      style={{ width: '500px', minHeight: '100vh', padding: '16px' }}
+    >
       <div className="card-body">
         <p className="card-text">Drop here</p>
         <div className="d-flex flex-wrap">
@@ -66,9 +74,8 @@ const DesignCake = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [currentCake, setCurrentCake] = useState([]);
   const [imageURL, setImageURL] = useState(null);
-  // const [baker] = props;
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
-
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -81,9 +88,14 @@ const DesignCake = () => {
       const prompt = selectedItems.map((item) => item.name).join(' ');
       const imageUrl = await fetchData(prompt);
       setImageURL(imageUrl);
+      setIsModalOpen(true);
     } catch (error) {
       console.error('Error fetching image:', error);
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const cakeBases = [
@@ -105,17 +117,17 @@ const DesignCake = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="container mt-5">
-        <h2 className="mb-4">Design Your Own Cake</h2>
+        <h2 className="cake-top-lable mb-4">Design Your Own Cake</h2>
 
-        <div className="row">
+        <div className="row full-order-erea p-3">
           <div className="col-md-6">
             <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
           </div>
 
-          <div className="col-md-6">
+          <div className=" col-md-6 choose-erea">
             <div className="row">
               <div className="col-md-4">
-                <h3>Cake Bases</h3>
+                <h3 className="cake-top-lable lable">Cake Bases</h3>
                 <div className="d-flex flex-wrap">
                   {cakeBases.map((item) => (
                     <DragItem key={item.name} {...item} />
@@ -124,7 +136,7 @@ const DesignCake = () => {
               </div>
 
               <div className="col-md-8">
-                <h3>Cake Decorations</h3>
+                <h3 className="cake-top-lable lable">Cake Decorations</h3>
                 <div className="d-flex flex-wrap">
                   {cakeDecorations.map((item) => (
                     <DragItem key={item.name} {...item} />
@@ -144,8 +156,11 @@ const DesignCake = () => {
           ))}
         </div>
 
-        <button onClick={handleShowImage} className='button button-info'>הצג הדמיה</button>
-        <br></br>
+        <button onClick={handleShowImage} className="button button-info">
+          הצג הדמיה
+        </button>
+
+        {isModalOpen && <Modal imageURL={imageURL} onClose={closeModal} />}
 
         {imageURL && (
           <div className="mt-4">
