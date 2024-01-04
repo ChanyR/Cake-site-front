@@ -13,6 +13,7 @@ import Paypal from '../general/paypal';
 import BakerList from '../bakers/bakersList';
 import { AppContext } from '../context/context';
 import { Alert } from '@mui/material';
+import './cakeOrdering.css'
 
 const steps = ['בחירת אופה', 'עצב עוגה כרצונך', 'תשלום'];
 
@@ -55,7 +56,7 @@ const CakeOrdering = () => {
   };
 
   return (
-    <div>
+    <div className='allPage'>
       <div>CakeOrdering</div>
       <Box sx={{ width: '100%' }} dir="ltr">
         <Stepper activeStep={activeStep}>

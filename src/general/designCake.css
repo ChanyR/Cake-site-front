@@ -22,9 +22,14 @@
 }
 
 .full-order-erea{
-    background-image: url(../../public/images/pexels-mikhail-nilov-6958023.jpg);
+    /* background-image: url(../../public/images/pexels-mikhail-nilov-6958023.jpg);
     background-position: center center;
-    background-size: cover;
+    background-size: cover; */
+}
+
+.allPage{
+    background-image:" url(../../public/images/pexels-mikhail-nilov-6958023.jpg)";
+    
 }
 
 .choose-erea{

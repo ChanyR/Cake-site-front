@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
-import Modal from './model'; // Assuming the Modal component is in the same directory
+import Modal from './model';
 import './designCake.css';
 
 const ItemTypes = {
@@ -101,7 +101,6 @@ const DesignCake = () => {
   const cakeBases = [
     { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
     { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
-    // Add more cake bases as needed
   ];
 
   const cakeDecorations = [
@@ -111,42 +110,42 @@ const DesignCake = () => {
     { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
     { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
     { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
-    // Add more cake decorations as needed
   ];
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="container mt-5">
         <h2 className="cake-top-lable mb-4">Design Your Own Cake</h2>
+        <div className="cake-top-lable mb-4">
+          <div className="row full-order-erea p-3">
+            <div className="col-md-6">
+              <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
+            </div>
 
-        <div className="row full-order-erea p-3">
-          <div className="col-md-6">
-            <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
-          </div>
-
-          <div className=" col-md-6 choose-erea">
-            <div className="row">
-              <div className="col-md-4">
-                <h3 className="cake-top-lable lable">Cake Bases</h3>
-                <div className="d-flex flex-wrap">
-                  {cakeBases.map((item) => (
-                    <DragItem key={item.name} {...item} />
-                  ))}
+            <div className=" col-md-6 choose-erea">
+              <div className="row">
+                <div className="col-md-4">
+                  <h3 className="cake-top-lable lable">Cake Bases</h3>
+                  <div className="d-flex flex-wrap">
+                    {cakeBases.map((item) => (
+                      <DragItem key={item.name} {...item} />
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="col-md-8">
-                <h3 className="cake-top-lable lable">Cake Decorations</h3>
-                <div className="d-flex flex-wrap">
-                  {cakeDecorations.map((item) => (
-                    <DragItem key={item.name} {...item} />
-                  ))}
+                <div className="col-md-8">
+                  <h3 className="cake-top-lable lable">Cake Decorations</h3>
+                  <div className="d-flex flex-wrap">
+                    {cakeDecorations.map((item) => (
+                      <DragItem key={item.name} {...item} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
+///
         <div className="mt-4">
           <h3>Your Cake</h3>
           {currentCake.map((item, index) => (
