@@ -8,6 +8,7 @@ import { AppContext } from '../context/context';
 
 const Baker = (props) => {
   const { item, handleLikeClick, handleDislikeClick } = props;
+  const {activeStep, setActiveStep} = useContext(AppContext);
   const [selectedBaker, setSelectedBaker] = useState(null);
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
 
@@ -68,19 +69,16 @@ const Baker = (props) => {
 
   }
 
-  const chooseBaker = () => {
-
-  }
-
   const startOrder = (baker) => {
     // let userInfo=await getUserInfo();
     // console.log(userInfo.role);
     setChosenBaker(baker);
+    setActiveStep(1);
     nav(`/cake-order`);
   }
 
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={8}>
       <Card sx={{ width: '100%', backgroundColor: "#f2f2f2", height: '100%' }}>
         <CardContent>
           <Typography variant="h6" gutterBottom>
@@ -101,7 +99,7 @@ const Baker = (props) => {
             פרטים נוספים
           </Button>
 
-          <Button size="small" color="primary" onClick={startOrder(item)}>
+          <Button size="small" color="primary" onClick={()=>startOrder(item)}>
             בחירת קונדיטור
           </Button>
 
