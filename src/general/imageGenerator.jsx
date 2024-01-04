@@ -6,7 +6,7 @@ export async function fetchData(prompt) {
     const response = await axios.post(
       "https://api.openai.com/v1/images/generations",
       {
-        prompt:`a full color photo of a delicious and impressive cake with ${prompt}`,
+        prompt:`Full color image from the front view of a delicious and impressive tall cake with ${prompt}`,
         n: 1,
         size: "512x512",
       },

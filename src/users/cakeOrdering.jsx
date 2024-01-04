@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 
 import Box from '@mui/material/Box';
@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import UserHome from './userHome';
 import DesignCake from '../general/designCake'
 import Paypal from '../general/paypal';
+import BakerList from '../bakers/bakersList';
+import { AppContext } from '../context/context';
 
 const steps = ['בחירת אופה', 'עצב עוגה כרצונך', 'תשלום'];
 
@@ -19,6 +21,13 @@ const CakeOrdering = () => {
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const { chosenBaker, setChosenBaker } = useContext(AppContext);
+
+  useEffect(()=>{
+    if(chosenBaker==null){
+      setActiveStep(0);
+    }
+  })
 
   const isStepSkipped = (step) => {
     return skipped.has(step);
@@ -36,6 +45,9 @@ const CakeOrdering = () => {
   };
 
   const handleBack = () => {
+    if(activeStep==1){
+      setChosenBaker(null)
+    }
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -77,7 +89,7 @@ const CakeOrdering = () => {
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
               Step {activeStep + 1}
-              {activeStep == 0 && <UserHome />}
+              {activeStep == 0 && <BakerList />}
               {activeStep == 1 && <DesignCake />}
               {activeStep == 2 && <Paypal />}
 

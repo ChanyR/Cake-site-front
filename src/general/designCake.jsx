@@ -1,6 +1,6 @@
 // DesignCake.jsx
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Card from '@mui/material/Card';
@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { fetchData } from '../general/imageGenerator';
+import { AppContext } from '../context/context';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
@@ -65,6 +66,9 @@ const DesignCake = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [currentCake, setCurrentCake] = useState([]);
   const [imageURL, setImageURL] = useState(null);
+  // const [baker] = props;
+  const { chosenBaker, setChosenBaker } = useContext(AppContext);
+
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
