@@ -9,6 +9,7 @@ import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
 import Modal from './model';
 import './designCake.css';
+import Button from '@mui/material/Button';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
@@ -76,6 +77,12 @@ const DesignCake = () => {
   const [imageURL, setImageURL] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
+  let cakeBases;
+  let cakeDecorations;
+
+  // useEffect(()=>{
+  //   fetchDataChosenBker();
+  // })
 
   
 
@@ -100,12 +107,22 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  const cakeBases = [
+  // const fetchDataChosenBker=async()=>{
+  //   chosenBaker.cake_bases.map(item=>{
+  //     cakeBases.push(item);
+  //   })
+      
+  //   chosenBaker.cake_decorations.map(item=>{
+  //     cakeDecorations.push(item);
+  //   })
+  // }
+
+  cakeBases = [
     { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
     { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
   ];
 
-  const cakeDecorations = [
+  cakeDecorations = [
     { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
     { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
     { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
@@ -147,30 +164,37 @@ const DesignCake = () => {
             </div>
           </div>
         </div>
-///
-        <div className="mt-4">
+
+        {/* <div className="mt-4">
           <h3>Your Cake</h3>
           {currentCake.map((item, index) => (
             <div key={index} className="mt-2">
               {item.name}
             </div>
           ))}
+        </div> */}
+
+
+
+
+
+
+        <div className='d-flex align-items-center justify-content-center'>
+          <button color="secondary" onClick={handleShowImage} className="button button-info button-89">
+            הצג הדמיה
+          </button>
+
         </div>
-
-        <button onClick={handleShowImage} className="button button-info">
-          הצג הדמיה
-        </button>
-
         {isModalOpen && <Modal imageURL={imageURL} onClose={closeModal} />}
 
-        {imageURL && (
+        {/* {imageURL && (
           <div className="mt-4">
             <h3>Generated Image</h3>
             <div className="mt-2">
               <img src={imageURL} alt="Generated Image" style={{ maxWidth: '200px', maxHeight: '200px' }} />
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </DndProvider>
   );
