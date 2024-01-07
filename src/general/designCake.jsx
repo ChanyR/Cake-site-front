@@ -77,6 +77,8 @@ const DesignCake = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
 
+  
+
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
     setSelectedItems(updatedItems);
