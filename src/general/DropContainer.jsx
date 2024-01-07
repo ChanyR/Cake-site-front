@@ -24,7 +24,7 @@ const DropContainer = ({ onDrop, selectedItems }) => {
         <p className="card-text">Drop here</p>
         <div className="d-flex flex-wrap">
           {selectedItems.map((item, index) => (
-            <div key={index} className="mt-2 mr-2">
+            <div key={index} className="mt-2 mr-2 m-1">
               <img src={item.image} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
             </div>
           ))}

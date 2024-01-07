@@ -25,6 +25,12 @@ const Payment = () => {
       <div className="centered-container">
         <Paypal />
       </div>
+
+    <div className="container mt-4 text-center">
+        
+        <Paypal/>
+
+    </div>
     </div>
   )
 }
