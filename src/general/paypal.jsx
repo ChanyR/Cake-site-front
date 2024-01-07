@@ -1,10 +1,13 @@
 import { PayPalButton } from "react-paypal-button-v2"
-
+import { useContext } from 'react';
+import { AppContext } from '../context/context';
 function Paypal() {
+  const {total, setTotal } = useContext(AppContext);
+
     return(
-    <PayPalButton
+    <PayPalButton 
         currency="ILS"
-        amount="90"
+        amount={total}
         options={{
           clientId:"AahHQeyrTMYMwfwX76hxNdQ4jVbVuCfry5gqvTN_vG9AutdOB3pWVwNU75ve76ka7nrotHdj3DYJav0b"
         }}

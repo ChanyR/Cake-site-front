@@ -1,0 +1,17 @@
+.payment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #e9daab;
+    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Lemon', serif;
+}
+
+
+  
+  .centered-container {
+    /* Optional: Add styles for the centered container holding the Paypal component */
+    text-align: center;
+  }
