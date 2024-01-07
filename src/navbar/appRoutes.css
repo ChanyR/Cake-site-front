@@ -1,0 +1,39 @@
+
+   *{
+    box-sizing: border-box;
+  }
+
+header {
+    background: rgba(249, 246, 246, 0.5);
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.17);
+
+}
+
+/* .nav{
+    background: rgb(209, 202, 202,0.8);
+  position:sticky;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.17);
+   } */
+
+   
+   /* .changeColor{
+    color:black;
+    text-decoration: none;
+    padding: 0 12px;
+    transition: 1000ms;
+  }
+  
+  
+  .changeColor:hover {
+    color: black;
+    transform: rotate(1.5,1.5);
+  } */
+  
+  
