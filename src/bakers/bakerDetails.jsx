@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Modal from 'react-modal';
+import { AppContext } from '../context/context';
 
 const BakerDetails = ({ baker, isOpen, onClose }) => {
   console.log(baker);
+  // const[baker]=useContext(AppContext)
   const [bakerDetails, setBakerDetails] = useState({ _id: baker._id, name: baker.name || '', email: baker.email || '', likes: baker.likes.length || '', comments: baker.comments, cake_bases: baker.cake_bases, cake_decorations: baker.cake_decorations });
 
   const handleSave = () => {

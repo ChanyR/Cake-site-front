@@ -23,6 +23,7 @@ import BakerPage from './bakers/bakerPage'
 import BakerImage from './bakers/bakerImage'
 import ForgetPassword from './users/forgetPassword'
 import BakerProfile from './bakers/bakerProfile'
+import BakerDetails from './bakers/bakerDetails'
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
           <Route path="/bakerPage" element={<BakerPage />} />
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route path="/bakerProfile" element={<BakerProfile />} />
+          <Route path="/bakerDetails" element={<BakerDetails />} />
           <Route path='/*' element={<NotFound/>}/>
           {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
