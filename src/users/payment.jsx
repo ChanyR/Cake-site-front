@@ -4,7 +4,7 @@ import Paypal from '../general/paypal'
 const Payment = () => {
   return (
 
-    <div>
+    <div className="container mt-4 text-center">
         
         <Paypal/>
 

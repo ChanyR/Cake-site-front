@@ -17,20 +17,22 @@ const DragItem = ({ type, name, image, price }) => {
   return (
     <Card
       ref={drag}
-      className="mb-2"
+      className="mb-1 p-0"
       sx={{
-        width: 150,
+        width: 120,
         margin: 2,
         cursor: 'move',
         opacity: isDragging ? 0.4 : 1,
       }}
+
+      // style={{padding:"0px",marginBottom:"0px"}}
     >
       <CardMedia component="img" alt={name} height="140" image={image} />
-      <CardContent>
-        <Typography variant="h6" component="div">
+      <CardContent >
+        <Typography variant="h6" component="div" >
           {name}
         </Typography>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="body2" color="textSecondary" >
           Price: {price}
         </Typography>
       </CardContent>
