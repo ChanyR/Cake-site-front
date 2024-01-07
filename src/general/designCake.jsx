@@ -10,6 +10,7 @@ import { AppContext } from '../context/context';
 import Modal from './model';
 import './designCake.css';
 import Button from '@mui/material/Button';
+import { baseById, decorationById } from '../services/functionApiService';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
@@ -80,11 +81,10 @@ const DesignCake = () => {
   let cakeBases;
   let cakeDecorations;
 
-  // useEffect(()=>{
-  //   fetchDataChosenBker();
-  // })
-
-  
+  // useEffect(async()=>{
+  //   console.log("aaaa");
+  //   await fetchDataChosenBker();
+  // })  
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -107,15 +107,23 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  // const fetchDataChosenBker=async()=>{
-  //   chosenBaker.cake_bases.map(item=>{
-  //     cakeBases.push(item);
-  //   })
+  const fetchDataChosenBker=async()=>{
+    console.log("bbb");
+
+    await chosenBaker.cake_bases.map(item=>{
+      alert(item)
+      console.log(item);
+      let b=baseById(item);
+      console.log(b);
+      cakeBases.push(b);
+    })
       
-  //   chosenBaker.cake_decorations.map(item=>{
-  //     cakeDecorations.push(item);
-  //   })
-  // }
+    await chosenBaker.cake_decorations.map(item=>{
+      alert(item)
+      let d=decorationById(item);
+      cakeDecorations.push(d);
+    })
+  }
 
   cakeBases = [
     { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
