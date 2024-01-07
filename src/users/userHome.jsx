@@ -4,13 +4,14 @@ import BakerList from '../bakers/bakersList'
 import { useNavigate } from 'react-router'
 import { getUserInfo } from '../services/functionApiService'
 import { AppContext } from '../context/context'
+import './userHome.css'
 
 const UserHome = () => {
   const navigate = useNavigate();
-  const {activeStep, setActiveStep} = useContext(AppContext);
+  const { activeStep, setActiveStep } = useContext(AppContext);
 
 
-  const startOrder = async() => {
+  const startOrder = async () => {
     // let userInfo=await getUserInfo();
     // console.log(userInfo.role);
     setActiveStep(0)
@@ -18,13 +19,11 @@ const UserHome = () => {
   }
 
   return (
-    <div className='container w-100'>
-      
-      <button onClick={startOrder}>התחל הזמנה</button>
-      {/* <BakerList /> */}
+    <div className='container-fluid img'>
+      <div className='btn w-100 '>
+        <button onClick={startOrder} class="button-48" role="button"><span class="text">התחל הזמנה</span></button>
+      </div>
     </div>
-
-
   )
 }
 

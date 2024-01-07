@@ -17,6 +17,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AppContext } from '../context/context';
 import Cookies from 'js-cookie';
 import PersonIcon from '@mui/icons-material/Person';
+import './appRoutes.css';
+
 
 export default function AppRoutes() {
     const { user, setUser } = useContext(AppContext);
@@ -43,65 +45,82 @@ export default function AppRoutes() {
     };
     return (
         <div>
-            <header className=' ccontainer-fluid sticky-top ' style={{  height: "80px", zIndex: 1000 }} >
-                
+
+            {/* style={{ height: "80px", zIndex: 1000 }}  */}
+            <header className=' ccontainer-fluid sticky-top ' >
+
                 {user != null ?
-                    <div className='d-flex justify-content-between align-items-center p-4' data-user-set-bg="#ffffff">
-                        
-                        <div>
-                        {/* <a id="logo" href="https://theboutiquecake.com" data-supplied-ml-starting-dark="false" data-supplied-ml-starting="false" data-supplied-ml="true">
-            <img class="stnd skip-lazy default-logo" width="500" height="213" alt="The Boutique Cake"
-                src="https://res.cloudinary.com/dwwvof9x3/image/upload/v1704410403/%D7%98%D7%A7%D7%A1%D7%98_%D7%94%D7%A4%D7%A1%D7%A7%D7%94_%D7%A9%D7%9C%D7%9A_2_jwirhj.png"/>
-                
-                </a> */}
-                            <Avatar sx={{ bgcolor: "#eb0e9a", margin: "0", direction: "rtl" }}
-                                id="basic-button"
-                                aria-controls={open ? 'basic-menu' : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                                onClick={handleClick}
-                                src={user.image}
-                                alt={user.name}
-                            />
-                            {/* {user?.name[0]} */}
-                            {/* </Avatar> */}
-                            <Menu
-                                id="basic-menu"
-                                className="mt-3"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}
-                                MenuListProps={{
-                                    'aria-labelledby': 'basic-button',
-                                }}
-                            >
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none py-2  px-0' style={{  color: 'silver' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל אישי</Link></MenuItem>
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='text-decoration-none py-2 px-0' style={{  color: 'silver' }}><FavoriteBorderIcon color='turquoise' className="ps-1" />אופים שמורים</Link></MenuItem>
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='text-decoration-none py-2 px-0' style={{  color: 'silver' }}><InsertInvitationIcon color='turquoise' className="ps-1" />הזמנות שלי</Link></MenuItem>
-                                {user.role == "baker" &&
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='text-decoration-none py-2 px-0' style={{  color: 'silver' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל האופה שלי</Link></MenuItem>
-                                }
-                                {user.role == "admin" && <>
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='text-decoration-none py-2 px-0' style={{  color: 'silver' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול משתמשים</Link></MenuItem>
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakersManagement" className='text-decoration-none py-2 px-0' style={{  color: 'silver' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול אופים</Link></MenuItem>
-                                </>}
-                                <MenuItem onClick={handleClose} dir='rtl' ><Link to="/logout" className='text-decoration-none py-2 px-0' style={{  color: 'silver' }}><LogoutIcon color='turquoise' className="ps-1" />יציאה</Link></MenuItem>
-                                <MenuItem className='bg-dark' onClick={handleClose} dir='rtl' ><img className='me-3' src='https://i.ibb.co/Bs6MHb6/01.png' width={130} /></MenuItem>
+                    <div className='container '>
+                        <div className='  row align-items-center justify-content-between' >
 
-                            </Menu>
+                            <div className='col-auto justify-content-between d-lg-flex align-items-center  p-4'>
+
+
+                                <Avatar sx={{ margin: "0", direction: "rtl" }}
+                                    id="basic-button"
+                                    aria-controls={open ? 'basic-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                                    onClick={handleClick}
+                                    src={user.image}
+                                    alt={user.name}
+                                />
+
+                                <Menu
+                                    id="basic-menu"
+                                    className="mt-4 "
+                                    anchorEl={anchorEl}
+                                    open={open}
+                                    onClose={handleClose}
+                                    MenuListProps={{
+                                        'aria-labelledby': 'basic-button',
+                                    }}
+                                >
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='changeColor text-decoration-none py-2  px-0' style={{ color: 'black' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל אישי</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><FavoriteBorderIcon color='turquoise' className="ps-1" />אופים שמורים</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />הזמנות שלי</Link></MenuItem>
+                                    {user.role == "baker" &&
+                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל האופה שלי</Link></MenuItem>
+                                    }
+                                    {user.role == "admin" && <>
+                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול משתמשים</Link></MenuItem>
+                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakersManagement" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול אופים</Link></MenuItem>
+                                    </>}
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/logout" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><LogoutIcon color='turquoise' className="ps-1" />יציאה</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><img className='me-3' src='https://res.cloudinary.com/dwwvof9x3/image/upload/v1704361073/logo_jqwev5.jpg' width={130} /></MenuItem>
+
+                                </Menu>
+
+                                <Link to="/home/?page=1" className='me-3 ' style={{ color: 'black' }}><HomeIcon color="white" />
+                                </Link>
+                            </div>
+
+                            <div class="col-auto row align-items-center">
+                                <a href="https://theboutiquecake.com" >
+                                    <img class="stnd skip-lazy default-logo" width="200" height="80" alt="Boutique Cakes"
+                                        src="https://res.cloudinary.com/dwwvof9x3/image/upload/v1704628041/%D7%98%D7%A7%D7%A1%D7%98_%D7%94%D7%A4%D7%A1%D7%A7%D7%94_%D7%A9%D7%9C%D7%9A__2_-removebg-preview_lgudmj.png" />
+                                    {/* <img class="mobile-only-logo skip-lazy" alt="Boutique Cakes" width="512" height="512"
+                                        src="https://res.cloudinary.com/dwwvof9x3/image/upload/v1704361073/logo_jqwev5.jpg"></img> */}
+                                </a>
+                            </div>
+
                         </div>
-
-                        <nav className=''>
-                            <Link to="/home/?page=1" className='me-3 btn btn-outline-dark' style={{ color: 'silver' }}><HomeIcon color="white" />
-                            </Link>
-                        </nav>
-
                     </div> :
-                    <nav className='container p-4'>
-                        
-                        {/* <Link to="/login" className='me-3 btn btn-outline-dark' style={{ color: 'silver' }}>כניסה לאיזור האישי</Link> */}
-                        <Link to="/login" className='me-3 ' >< PersonIcon style={{ color: 'silver' }}/></Link>
-                        <Link to="/" className='me-3 ' style={{ color: 'silver' }}><HomeIcon color="white" /></Link>
+                    <nav className='container '>
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto justify-content-between  d-lg-flex  align-items-center  pt-4">
+                                <Link to="/login" className='me-3 ' >< PersonIcon style={{ color: 'black' }} /></Link>
+                                <Link to="/" className='me-3 align-items-center' style={{ color: 'black' }}><HomeIcon color="white" /></Link>
+
+                            </div>
+                            <div class=" col-auto row align-items-center">
+                                <a href="https://theboutiquecake.com" >
+                                    <img class="stnd skip-lazy default-logo" width="200" height="80" alt="Boutique Cakes"
+                                        src="https://res.cloudinary.com/dwwvof9x3/image/upload/v1704628041/%D7%98%D7%A7%D7%A1%D7%98_%D7%94%D7%A4%D7%A1%D7%A7%D7%94_%D7%A9%D7%9C%D7%9A__2_-removebg-preview_lgudmj.png" />
+                                </a>
+                            </div>
+
+                        </div>
                     </nav>
                 }
 
