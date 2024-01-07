@@ -111,7 +111,7 @@ const UserProfile = () => {
 
   return (
     <div className={classes.container}>
-      <Paper elevation={3} className='align-items-center mb-5'>
+      <Paper elevation={0} className='container align-items-center mb-5 mt-5'>
       <div className='container d-flex  align-items-center mb-5'>
       <Avatar alt={user.name} src={user.image} className={classes.avatar} />
 
@@ -164,3 +164,141 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+
+// import React, { useContext, useState } from 'react';
+// import { AppContext } from '../context/context';
+// import { Button, TextField } from '@mui/material';
+// import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+// import DeleteIcon from '@mui/icons-material/Delete';
+// import Axios from 'axios';
+
+// const UserProfile = () => {
+//   const { user, setUser } = useContext(AppContext);
+//   const [editing, setEditing] = useState(false);
+//   const [newName, setNewName] = useState(user.name);
+//   const [newEmail, setNewEmail] = useState(user.email);
+
+//   const handleImageChange = async (e) => {
+//     const file = e.target.files[0];
+//     if (file) {
+//       try {
+//         const imageUrl = await uploadImage(file);
+
+//         setUser((prevData) => ({
+//           ...prevData,
+//           image: imageUrl,
+//         }));
+//         await updateUserApi(user._id, { name: user.name, email: user.email, role: user.role, image: imageUrl });
+//       } catch (error) {
+//         console.error('Error uploading image to Cloudinary:', error);
+//       }
+//     }
+//   };
+
+//   const uploadImage = async (file) => {
+//     if (!file) {
+//       throw new Error('No file provided');
+//     }
+
+//     try {
+//       const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/dwwvof9x3/image/upload';
+//       const uploadPreset = 'vqxjlzqi';
+
+//       const formData = new FormData();
+//       formData.append('file', file);
+//       formData.append('upload_preset', uploadPreset);
+
+//       const response = await Axios.post(cloudinaryUrl, formData);
+
+//       if (response.status === 200) {
+//         return response.data.secure_url;
+//       } else {
+//         console.error('Cloudinary Response:', response);
+//         throw new Error('Failed to upload image to Cloudinary');
+//       }
+//     } catch (error) {
+//       console.error('Error uploading image to Cloudinary:', error);
+//       throw error;
+//     }
+//   };
+
+//   const handleEditSubmit = async () => {
+//     setUser((prevData) => ({
+//       ...prevData,
+//       name: newName,
+//       email: newEmail,
+//     }));
+//     await updateUserApi(user._id, { name: newName, email: newEmail, role: user.role, image: user.image });
+
+//     setEditing(false);
+//   };
+
+//   const handleRemoveImage = async () => {
+//     try {
+//       setUser((prevData) => ({
+//         ...prevData,
+//         image: "no image",
+//       }));
+//       await updateUserApi(user._id, { name: user.name, email: user.email, role: user.role, image: "no image" });
+//     } catch (error) {
+//       console.error('Error removing image:', error);
+//     }
+//   };
+
+//   return (
+//     <div className='user-profile-container'>
+//       <div className='user-profile-root'>
+//         <img className='avatar' alt={user.name} src={user.image} />
+
+//         <input type='file' style={{ display: 'none' }} onChange={handleImageChange} id="icon-button-file" />
+//         <label htmlFor="icon-button-file">
+//           <Button variant="contained" color="primary" component="span" startIcon={<CloudUploadIcon />}>
+//             Upload
+//           </Button>
+//         </label>
+
+//         {editing ? (
+//           <form className='edit-form'>
+//             <TextField
+//               label="Name"
+//               value={newName}
+//               onChange={(e) => setNewName(e.target.value)}
+//               fullWidth
+//               margin="normal"
+//             />
+//             <TextField
+//               label="Email"
+//               value={newEmail}
+//               onChange={(e) => setNewEmail(e.target.value)}
+//               fullWidth
+//               margin="normal"
+//             />
+//             <Button variant="contained" color="primary" onClick={handleEditSubmit}>
+//               Save
+//             </Button>
+//             <Button variant="outlined" color="secondary" onClick={handleRemoveImage} startIcon={<DeleteIcon />}>
+//               Remove Image
+//             </Button>
+//           </form>
+//         ) : (
+//           <>
+//             <h5>{user.name}</h5>
+//             <p>{user.email}</p>
+//             <Button variant="outlined" color="primary" onClick={() => setEditing(true)}>
+//               Edit
+//             </Button>
+//             {user.image && (
+//               <Button variant="outlined" color="secondary" onClick={handleRemoveImage} startIcon={<DeleteIcon />}>
+//                 Remove Image
+//               </Button>
+//             )}
+//           </>
+//         )}
+//       </div>
+//     </div>
+// );
+// };
+
+
+
+// export default UserProfile;

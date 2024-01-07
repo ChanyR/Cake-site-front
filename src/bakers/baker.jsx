@@ -26,45 +26,47 @@ const Baker = (props) => {
     setIsLiked(!isLiked);
   };
 
-  const getBakersDetails = () => {
-    return (
-      <div className={`user-card ${isOpen ? 'open' : 'closed'}`}>
-        {isOpen && (
-          <>
-            <h2>{item.name}</h2>
-            <p>Email: {item.email}</p>
-            <p>Likes: {item.likes.length}</p>
-            <p>
-              Comments: {item.comments && item.comments.length > 0 ? (
-                item.comments.map((comment, index) => (
-                  <span key={index}>{comment.comment}{index !== item.comments.length - 1 ? ', ' : ''}</span>
-                ))
-              ) : (
-                'No comments'
-              )}
-            </p>
-            <p>Cake Bases: {item.cake_bases && item.cake_bases.length > 0 ? (
-              item.cake_bases.map((base, index) => (
-                <span key={index}>{base}{index !== item.cake_bases.length - 1 ? ', ' : ''}</span>
-              ))
-            ) : 'No cake bases'}</p>
+  // const getBakersDetails = () => {
+  //   return (
+  //     <div className={`user-card ${isOpen ? 'open' : 'closed'}`}>
+  //       {isOpen && (
+  //         <>
+  //           <h2>{item.name}</h2>
+  //           <p>Email: {item.email}</p>
+  //           <p>Likes: {item.likes.length}</p>
+  //           <p>
+  //             Comments: {item.comments && item.comments.length > 0 ? (
+  //               item.comments.map((comment, index) => (
+  //                 <span key={index}>{comment.comment}{index !== item.comments.length - 1 ? ', ' : ''}</span>
+  //               ))
+  //             ) : (
+  //               'No comments'
+  //             )}
+  //           </p>
+  //           <p>Cake Bases: {item.cake_bases && item.cake_bases.length > 0 ? (
+  //             item.cake_bases.map((base, index) => (
+  //               <span key={index}>{base}{index !== item.cake_bases.length - 1 ? ', ' : ''}</span>
+  //             ))
+  //           ) : 'No cake bases'}</p>
 
-            <p>Cake Decorations: {item.decoration && item.decoration.length > 0 ? (
-              item.cake_bases.map((decoration, index) => (
-                <span key={index}>{decoration}{index !== item.cake_bases.length - 1 ? ', ' : ''}</span>
-              ))
-            ) : 'No cake decorations'}</p>
+  //           <p>Cake Decorations: {item.decoration && item.decoration.length > 0 ? (
+  //             item.cake_bases.map((decoration, index) => (
+  //               <span key={index}>{decoration}{index !== item.cake_bases.length - 1 ? ', ' : ''}</span>
+  //             ))
+  //           ) : 'No cake decorations'}</p>
 
-            <button onClick={toggleDetails}>Close</button>
-          </>
-        )}
-      </div>
-    );
-  };
+  //           <button onClick={toggleDetails}>Close</button>
+  //         </>
+  //       )}
+  //     </div>
+  //   );
+  // };
 
   const detailsBaker = (bakerId) => {
-    nav(`/bakerPage`)
+    // nav(`/bakerPage`)
+    nav(`/bakerDetails`)
     console.log("detailes" + bakerId);
+    console.log(item);
     setSelectedBaker(item);
 
   }

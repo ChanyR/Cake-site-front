@@ -7,8 +7,7 @@ import Modal from './model';
 import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
 import Button from '@mui/material/Button';
-import { baseById, decorationById } from '../services/functionApiService';
-import './designCake.css'
+import './designCake.css';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
@@ -19,14 +18,7 @@ const DesignCake = () => {
   const [currentCake, setCurrentCake] = useState([]);
   const [imageURL, setImageURL] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { chosenBaker, setChosenBaker } = useContext(AppContext);
-  const [cakeBases, setCakeBases] = useState([]);
-  const [cakeDecorations, setCakeDecorations] = useState([]);
-
-  useEffect(() => {
-    console.log(chosenBaker);
-
-  }, []);
+  const { chosenBaker, setChosenBaker, total, setTotal } = useContext(AppContext);
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -49,19 +41,22 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  // cakeBases = [
-  //   { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
-  //   { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
-  // ];
 
-  // cakeDecorations = [
-  //   { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
-  //   { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
-  //   { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
-  //   { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
-  //   { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
-  //   { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
-  // ];
+  const calculateTotal = () => {
+    let tempPrice = 0;
+    console.log(selectedItems);
+    selectedItems.forEach((item) => {
+        console.log(item.price);
+        tempPrice += item.price; 
+    });
+    setTotal(tempPrice)
+    console.log(total);
+  };
+
+  useEffect(() => {
+    // Call calculateTotal whenever selectedItems change
+    calculateTotal();
+  }, [selectedItems]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -96,7 +91,9 @@ const DesignCake = () => {
             </div>
           </div>
         </div>
-
+        <div>
+          <h3>price: {total}</h3>
+        </div>
         <div className='d-flex align-items-center justify-content-center'>
           <button color="secondary" onClick={handleShowImage} className="button button-info button-89">
             הצג הדמיה

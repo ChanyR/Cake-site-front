@@ -9,11 +9,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import UserHome from './userHome';
 import DesignCake from '../general/designCake'
-import Paypal from '../general/paypal';
+// import Paypal from '../general/paypal';
 import BakerList from '../bakers/bakersList';
 import { AppContext } from '../context/context';
 import { Alert } from '@mui/material';
 import './cakeOrdering.css'
+import Payment from './payment';
 
 const steps = ['בחירת אופה', 'עצב עוגה כרצונך', 'תשלום'];
 
@@ -87,7 +88,7 @@ const CakeOrdering = () => {
               {alertMsg && <Alert severity="error" style={{ marginBottom: '10px' }}>{activeStep == 0 && <p>בחר אופה</p>}</Alert>}
               {activeStep == 0 && <BakerList />}
               {activeStep == 1 && <DesignCake />}
-              {activeStep == 2 && <Paypal />}
+              {activeStep == 2 && <Payment/>}
 
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
