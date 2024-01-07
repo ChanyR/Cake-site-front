@@ -196,7 +196,7 @@ export const basesList = async () => {
 }
 
 export const baseById = async (id) => {
-    let url = `${url}/bases/${id}`;
+    let url = `${API_URL}/bases/${id}`;
     try {
         let resp = await apiRequestGet(url);
         console.log(resp.data);
@@ -209,7 +209,7 @@ export const baseById = async (id) => {
 }
 
 export const decorationById = async (id) => {
-    let url = `${url}/decorations/${id}`;
+    let url = `${API_URL}/decorations/${id}`;
     try {
         let resp = await apiRequestGet(url);
         console.log(resp.data);

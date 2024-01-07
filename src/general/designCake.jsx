@@ -78,34 +78,39 @@ const DesignCake = () => {
   const [imageURL, setImageURL] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
-  let cakeBases;
-  let cakeDecorations;
+  let [cakeBases,setCakeBases] = useState([]);
+  let [cakeDecorations,setCakeDecorations] = useState([]);
 
-  // useEffect(async()=>{
-  //   console.log("aaaa");
-  //   await fetchDataChosenBker();
-  // })  
   useEffect(() => {
-    const fetchDataChosenBker = async () => {
-      console.log("bbb");
+    fetchDataChosenBaker();
+  }, [cakeBases, cakeDecorations]);
 
-      await chosenBaker.cake_bases.map(item => {
-        alert(item);
-        console.log(item);
-        let b = baseById(item);
-        console.log(b);
-        cakeBases.push(b);
-      });
+  const fetchDataChosenBaker = () => {
+    fetchBasesChosenBaker();
+    // fetchDecorationsChosenBaker();
+  };
 
-      await chosenBaker.cake_decorations.map(item => {
-        alert(item);
-        let d = decorationById(item);
-        cakeDecorations.push(d);
-      });
-    };
+  const fetchBasesChosenBaker = async() => {
+    let array=[]
+    await chosenBaker.cake_bases.map(async (item) => {
+      let b = await baseById(item);
+      console.log(b);
+      array.push(b);
+    });
+    setCakeBases(array);
+    console.log(cakeBases);
+  };
 
-    fetchDataChosenBker();
-  }, []);
+  const fetchDecorationsChosenBaker = async() => {
+    let array=[];
+    await chosenBaker.cake_decorations.map(async (item) => {
+      let d = await decorationById(item);
+      console.log(d);
+      cakeDecorations.push(d);
+    });
+    setCakeDecorations(array);
+    console.log(cakeDecorations);
+  };
 
 
   const handleDrop = (item) => {
@@ -129,37 +134,19 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  // const fetchDataChosenBker=async()=>{
-  //   console.log("bbb");
+  // cakeBases = [
+  //   { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
+  //   { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
+  // ];
 
-  //   await chosenBaker.cake_bases.map(item=>{
-  //     alert(item)
-  //     console.log(item);
-  //     let b=baseById(item);
-  //     console.log(b);
-  //     cakeBases.push(b);
-  //   })
-      
-  //   await chosenBaker.cake_decorations.map(item=>{
-  //     alert(item)
-  //     let d=decorationById(item);
-  //     cakeDecorations.push(d);
-  //   })
-  // }
-
-  cakeBases = [
-    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
-    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
-  ];
-
-  cakeDecorations = [
-    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
-    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
-    { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
-    { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
-    { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
-    { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
-  ];
+  // cakeDecorations = [
+  //   { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
+  //   { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
+  //   { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
+  //   { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
+  //   { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
+  //   { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
+  // ];
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -176,7 +163,7 @@ const DesignCake = () => {
                 <div className="col-md-4">
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeBases.map((item) => (
+                    {cakeBases.length!=0 && cakeBases.map((item) => (
                       <DragItem key={item.name} {...item} />
                     ))}
                   </div>
@@ -185,7 +172,7 @@ const DesignCake = () => {
                 <div className="col-md-8">
                   <h3 className="cake-top-lable lable">Cake Decorations</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeDecorations.map((item) => (
+                    {cakeDecorations.length != 0 && cakeDecorations.map((item) => (
                       <DragItem key={item.name} {...item} />
                     ))}
                   </div>
