@@ -21,45 +21,11 @@ const DesignCake = () => {
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
   const [cakeBases, setCakeBases] = useState([]);
   const [cakeDecorations, setCakeDecorations] = useState([]);
-  let array = [];
-  let array2 = [];
 
   useEffect(() => {
-    fetchDataChosenBaker();
+    console.log(chosenBaker);
+
   }, []);
-
-  const fetchDataChosenBaker = async() => {
-    let base_arr=await fetchBasesChosenBaker();
-    setCakeBases(base_arr);
-    let decoration_arr=await fetchDecorationsChosenBaker();
-    setCakeDecorations(decoration_arr);
-  };
-
-  const fetchBasesChosenBaker = () => {
-    chosenBaker.cake_bases.map(async (item) => {
-      let b = await baseById(item);
-      array.push(b);
-    });
-    console.log(array);
-    return array;
-    // console.log(cakeBases);
-    // setCakeBases(array);
-  };
-  console.log(cakeBases);
-
-
-  const fetchDecorationsChosenBaker = async () => {
-    await chosenBaker.cake_decorations.map(async (item) => {
-      let d = await decorationById(item);
-      array2.push(d);
-    });
-    console.log(array2);
-    return array2
-    // setCakeDecorations(array2);
-    // console.log(cakeDecorations);
-  };
-  console.log(cakeDecorations);
-
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -111,8 +77,9 @@ const DesignCake = () => {
                 <div className="col-md-4">
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeBases.length != 0 && cakeBases.map((item) => (
-                      <DragItem key={item.name} {...item} />
+                    {chosenBaker.cake_bases && cakeBases.map((item) => (
+                      console.log(item),
+                      <DragItem key={item._id} type={ItemTypes.CAKE_ITEM} name={item.cake_base} image={item.image} price={item.price}/>
                     ))}
                   </div>
                 </div>
@@ -120,8 +87,8 @@ const DesignCake = () => {
                 <div className="col-md-8">
                   <h3 className="cake-top-lable lable">Cake Decorations</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeDecorations.length != 0 && cakeDecorations.map((item) => (
-                      <DragItem key={item.name} {...item} />
+                    {chosenBaker.cake_decorations && cakeDecorations.map((item) => (
+                      <DragItem key={item._id} type={ItemTypes.CAKE_ITEM} name={item.decoration} image={item.image} price={item.price} />
                     ))}
                   </div>
                 </div>

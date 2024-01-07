@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-const DragItem = ({ name, type, image }) => {
+const DragItem = ({ type, name, image, price }) => {
   const [{ isDragging }, drag, preview] = useDrag({
     type,
     item: { name, image },
