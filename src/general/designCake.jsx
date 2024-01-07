@@ -43,18 +43,14 @@ const DesignCake = () => {
 
 
   const calculateTotal = () => {
-    let tempPrice = total;
+    let tempPrice = 0;
     console.log(selectedItems);
     selectedItems.forEach((item) => {
-      // if (item.price) {
         console.log(item.price);
-        // tempPrice += parseFloat(item.price);
-      // }
-      setTotal(tempPrice+=item.price)
-      console.log(total);
+        tempPrice += item.price; 
     });
-
-    // setTotal(tempPrice);
+    setTotal(tempPrice)
+    console.log(total);
   };
 
   useEffect(() => {
