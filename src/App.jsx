@@ -33,10 +33,11 @@ function App() {
   const [usersList, setUsersList] = useState([]);
   const [chosenBaker, setChosenBaker] = useState(null);
   const [activeStep, setActiveStep] = useState(0);
+  const [total, setTotal] = useState(0);
 
   return (
     <BrowserRouter>
-      <AppContext.Provider value={{ user, setUser, bakers, setBakers, usersList, setUsersList,chosenBaker,setChosenBaker,activeStep,setActiveStep }}>
+      <AppContext.Provider value={{ user, setUser, bakers, setBakers, usersList, setUsersList,chosenBaker,setChosenBaker,activeStep,setActiveStep ,total, setTotal}}>
 
         <Routes>
           {/* <Route path="/user/*" element={<UserNav />} />
