@@ -41,23 +41,10 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  const cakeBases = [
-    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg', price: 30 },
-    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' , price: 40 },
-  ];
-
-  const cakeDecorations = [
-    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png', price: 15 },
-    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg', price: 12 },
-    { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png', price: 10 },
-    { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png', price: 10 },
-    { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg', price: 10 },
-    { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg', price: 10 },
-  ];
 
   const calculateTotal = () => {
     let tempPrice = total;
-console.log(selectedItems);
+    console.log(selectedItems);
     selectedItems.forEach((item) => {
       // if (item.price) {
         console.log(item.price);
@@ -110,7 +97,7 @@ console.log(selectedItems);
           </div>
         </div>
         <div>
-          <h3>Your total: {total}</h3>
+          <h3>price: {total}</h3>
         </div>
         <div className='d-flex align-items-center justify-content-center'>
           <button color="secondary" onClick={handleShowImage} className="button button-info button-89">

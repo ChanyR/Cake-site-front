@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 const DragItem = ({ type, name, image, price }) => {
   const [{ isDragging }, drag, preview] = useDrag({
     type,
-    item: { name, image },
+    item: { name, image ,price},
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
