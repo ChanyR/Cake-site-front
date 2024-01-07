@@ -8,7 +8,7 @@ const Modal = ({ imageURL, onClose }) => {
       <Button variant="outlined" className="modal-close " onClick={onClose}>
       Close
     </Button>
-        <img src={'../../images/Berries.jpeg'} alt="Generated Image" style={{ maxWidth: '50vh', maxHeight: '50vh', display: 'flex', alignItems:'center' }} />
+        <img src={imageURL} alt="Generated Image" style={{ maxWidth: '50vh', maxHeight: '50vh', display: 'flex', alignItems:'center' }} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
 import Button from '@mui/material/Button';
 import { baseById, decorationById } from '../services/functionApiService';
+import './designCake.css'
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
