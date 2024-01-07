@@ -1,75 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useDrag, useDrop, DndProvider } from 'react-dnd';
+import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import DragItem from './DragItem';
+import DropContainer from './DropContainer';
+import Modal from './model';
 import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
-import Modal from './model';
-import './designCake.css';
 import Button from '@mui/material/Button';
 import { baseById, decorationById } from '../services/functionApiService';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
-};
-
-const DragItem = ({ name, type, image }) => {
-  const [{ isDragging }, drag, preview] = useDrag({
-    type,
-    item: { name, image },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  return (
-    <Card
-      ref={drag}
-      className="mb-2"
-      sx={{
-        width: 150,
-        margin: 2,
-        cursor: 'move',
-        opacity: isDragging ? 0.4 : 1,
-      }}
-    >
-      <CardMedia component="img" alt={name} height="140" image={image} />
-      <CardContent>
-        <Typography variant="h6" component="div">
-          {name}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
-
-const DropContainer = ({ onDrop, selectedItems }) => {
-  const [, drop] = useDrop({
-    accept: ItemTypes.CAKE_ITEM,
-    drop: (item) => onDrop(item),
-  });
-
-  return (
-    <div
-      ref={drop}
-      className="card border-dashed mb-2  choose-erea"
-      style={{ width: '500px', minHeight: '100vh', padding: '16px' }}
-    >
-      <div className="card-body">
-        <p className="card-text">Drop here</p>
-        <div className="d-flex flex-wrap">
-          {selectedItems.map((item, index) => (
-            <div key={index} className="mt-2 mr-2">
-              <img src={item.image} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 };
 
 const DesignCake = () => {
@@ -187,36 +128,12 @@ const DesignCake = () => {
           </div>
         </div>
 
-        {/* <div className="mt-4">
-          <h3>Your Cake</h3>
-          {currentCake.map((item, index) => (
-            <div key={index} className="mt-2">
-              {item.name}
-            </div>
-          ))}
-        </div> */}
-
-
-
-
-
-
         <div className='d-flex align-items-center justify-content-center'>
           <button color="secondary" onClick={handleShowImage} className="button button-info button-89">
             הצג הדמיה
           </button>
-
         </div>
         {isModalOpen && <Modal imageURL={imageURL} onClose={closeModal} />}
-
-        {/* {imageURL && (
-          <div className="mt-4">
-            <h3>Generated Image</h3>
-            <div className="mt-2">
-              <img src={imageURL} alt="Generated Image" style={{ maxWidth: '200px', maxHeight: '200px' }} />
-            </div>
-          </div>
-        )} */}
       </div>
     </DndProvider>
   );
