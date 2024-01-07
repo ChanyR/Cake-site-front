@@ -80,59 +80,42 @@ const DesignCake = () => {
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
   const [cakeBases, setCakeBases] = useState([]);
   const [cakeDecorations, setCakeDecorations] = useState([]);
+  let array=[];
+  let array2=[];
 
   useEffect(() => {
     fetchDataChosenBaker();
-  }, [cakeBases, cakeDecorations]);
-
+  }, []);
+  
   const fetchDataChosenBaker = () => {
     fetchBasesChosenBaker();
-    fetchDecorationsChosenBaker();
+    // fetchDecorationsChos>enBaker();
   };
 
-  const fetchBasesChosenBaker = async () => {
-    try {
-      const basePromises = chosenBaker.cake_bases.map(item => baseById(item));
-      const bases = await Promise.all(basePromises);
-      setCakeBases(bases);
-      console.log(bases);
-    } catch (error) {
-      console.error('Error fetching bases:', error);
-    }
+  const fetchBasesChosenBaker =() => {
+    // console.log(cakeBases);
+    chosenBaker.cake_bases.map(async (item) => {
+      let b = await baseById(item);
+      // console.log(b);
+      // console.log(cakeBases);
+      array.push(b);
+    });
+    // console.log(array);
+    setCakeBases(array);
+    // console.log(cakeBases);
   };
+  // console.log(cakeBases);
+  
 
-  const fetchDecorationsChosenBaker = async () => {
-    try {
-      const decorationPromises = chosenBaker.cake_decorations.map(item => decorationById(item));
-      const decorations = await Promise.all(decorationPromises);
-      setCakeDecorations(decorations);
-      console.log(decorations);
-    } catch (error) {
-      console.error('Error fetching decorations:', error);
-    }
+  const fetchDecorationsChosenBaker = async() => {
+    await chosenBaker.cake_decorations.map(async (item) => {
+      let d = await decorationById(item);
+      console.log(d);
+      array2.push(d);
+    });
+    setCakeDecorations(array2);
+    console.log(cakeDecorations);
   };
-
-  // const fetchBasesChosenBaker =() => {
-  //   let array=[]
-  //   chosenBaker.cake_bases.map(async (item) => {
-  //     let b = await baseById(item);
-  //     console.log(b);
-  //     array.push(b);
-  //   });
-  //   setCakeBases(array);
-  //   console.log(cakeBases);
-  // };
-
-  // const fetchDecorationsChosenBaker = async() => {
-  //   let array=[];
-  //   await chosenBaker.cake_decorations.map(async (item) => {
-  //     let d = await decorationById(item);
-  //     console.log(d);
-  //     cakeDecorations.push(d);
-  //   });
-  //   setCakeDecorations(array);
-  //   console.log(cakeDecorations);
-  // };
 
 
   const handleDrop = (item) => {
@@ -186,7 +169,7 @@ const DesignCake = () => {
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
                     {cakeBases.length != 0 && cakeBases.map((item) => (
-                      <DragItem key={item.name} {...item} />
+                      <DragItem key={item.name} {...item}  />
                     ))}
                   </div>
                 </div>
