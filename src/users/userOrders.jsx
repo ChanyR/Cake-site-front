@@ -5,8 +5,7 @@ import DesignCake from '../general/designCake'
 const UserOrders = () => {
   return (
     <div>
-      {/* <div>UserOrders</div> */}
-      <DesignCake/>
+      <div>UserOrders</div>
     </div>
   )
 }
