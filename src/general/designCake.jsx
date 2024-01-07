@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useDrag, useDrop, DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Card from '@mui/material/Card';
@@ -85,6 +85,28 @@ const DesignCake = () => {
   //   console.log("aaaa");
   //   await fetchDataChosenBker();
   // })  
+  useEffect(() => {
+    const fetchDataChosenBker = async () => {
+      console.log("bbb");
+
+      await chosenBaker.cake_bases.map(item => {
+        alert(item);
+        console.log(item);
+        let b = baseById(item);
+        console.log(b);
+        cakeBases.push(b);
+      });
+
+      await chosenBaker.cake_decorations.map(item => {
+        alert(item);
+        let d = decorationById(item);
+        cakeDecorations.push(d);
+      });
+    };
+
+    fetchDataChosenBker();
+  }, []);
+
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -107,23 +129,23 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  const fetchDataChosenBker=async()=>{
-    console.log("bbb");
+  // const fetchDataChosenBker=async()=>{
+  //   console.log("bbb");
 
-    await chosenBaker.cake_bases.map(item=>{
-      alert(item)
-      console.log(item);
-      let b=baseById(item);
-      console.log(b);
-      cakeBases.push(b);
-    })
+  //   await chosenBaker.cake_bases.map(item=>{
+  //     alert(item)
+  //     console.log(item);
+  //     let b=baseById(item);
+  //     console.log(b);
+  //     cakeBases.push(b);
+  //   })
       
-    await chosenBaker.cake_decorations.map(item=>{
-      alert(item)
-      let d=decorationById(item);
-      cakeDecorations.push(d);
-    })
-  }
+  //   await chosenBaker.cake_decorations.map(item=>{
+  //     alert(item)
+  //     let d=decorationById(item);
+  //     cakeDecorations.push(d);
+  //   })
+  // }
 
   cakeBases = [
     { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
