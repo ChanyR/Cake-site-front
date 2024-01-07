@@ -7,8 +7,7 @@ import Modal from './model';
 import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
 import Button from '@mui/material/Button';
-import { baseById, decorationById } from '../services/functionApiService';
-import './designCake.css'
+import './designCake.css';
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
@@ -19,48 +18,7 @@ const DesignCake = () => {
   const [currentCake, setCurrentCake] = useState([]);
   const [imageURL, setImageURL] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { chosenBaker, setChosenBaker } = useContext(AppContext);
-  const [cakeBases, setCakeBases] = useState([]);
-  const [cakeDecorations, setCakeDecorations] = useState([]);
-  let array = [];
-  let array2 = [];
-
-  useEffect(() => {
-    fetchDataChosenBaker();
-  }, []);
-
-  const fetchDataChosenBaker = async() => {
-    let base_arr=await fetchBasesChosenBaker();
-    setCakeBases(base_arr);
-    let decoration_arr=await fetchDecorationsChosenBaker();
-    setCakeDecorations(decoration_arr);
-  };
-
-  const fetchBasesChosenBaker = () => {
-    chosenBaker.cake_bases.map(async (item) => {
-      let b = await baseById(item);
-      array.push(b);
-    });
-    console.log(array);
-    return array;
-    // console.log(cakeBases);
-    // setCakeBases(array);
-  };
-  console.log(cakeBases);
-
-
-  const fetchDecorationsChosenBaker = async () => {
-    await chosenBaker.cake_decorations.map(async (item) => {
-      let d = await decorationById(item);
-      array2.push(d);
-    });
-    console.log(array2);
-    return array2
-    // setCakeDecorations(array2);
-    // console.log(cakeDecorations);
-  };
-  console.log(cakeDecorations);
-
+  const { chosenBaker, setChosenBaker, total, setTotal } = useContext(AppContext);
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -83,19 +41,26 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  // cakeBases = [
-  //   { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
-  //   { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
-  // ];
 
-  // cakeDecorations = [
-  //   { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
-  //   { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
-  //   { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
-  //   { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
-  //   { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
-  //   { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
-  // ];
+  const calculateTotal = () => {
+    let tempPrice = total;
+    console.log(selectedItems);
+    selectedItems.forEach((item) => {
+      // if (item.price) {
+        console.log(item.price);
+        // tempPrice += parseFloat(item.price);
+      // }
+      setTotal(tempPrice+=item.price)
+      console.log(total);
+    });
+
+    // setTotal(tempPrice);
+  };
+
+  useEffect(() => {
+    // Call calculateTotal whenever selectedItems change
+    calculateTotal();
+  }, [selectedItems]);
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -112,8 +77,9 @@ const DesignCake = () => {
                 <div className="col-md-4">
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeBases.length != 0 && cakeBases.map((item) => (
-                      <DragItem key={item.name} {...item} />
+                    {chosenBaker.cake_bases && chosenBaker.cake_bases.map((item) => (
+                      console.log(item),
+                      <DragItem key={item._id} type={ItemTypes.CAKE_ITEM} name={item.cake_base} image={item.image} price={item.price}/>
                     ))}
                   </div>
                 </div>
@@ -121,8 +87,8 @@ const DesignCake = () => {
                 <div className="col-md-8">
                   <h3 className="cake-top-lable lable">Cake Decorations</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeDecorations.length != 0 && cakeDecorations.map((item) => (
-                      <DragItem key={item.name} {...item} />
+                    {chosenBaker.cake_decorations && chosenBaker.cake_decorations.map((item) => (
+                      <DragItem key={item._id} type={ItemTypes.CAKE_ITEM} name={item.decoration} image={item.image} price={item.price} />
                     ))}
                   </div>
                 </div>
@@ -130,7 +96,9 @@ const DesignCake = () => {
             </div>
           </div>
         </div>
-
+        <div>
+          <h3>price: {total}</h3>
+        </div>
         <div className='d-flex align-items-center justify-content-center'>
           <button color="secondary" onClick={handleShowImage} className="button button-info button-89">
             הצג הדמיה

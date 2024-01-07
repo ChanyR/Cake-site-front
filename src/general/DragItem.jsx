@@ -5,10 +5,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-const DragItem = ({ name, type, image }) => {
+const DragItem = ({ type, name, image, price }) => {
   const [{ isDragging }, drag, preview] = useDrag({
     type,
-    item: { name, image },
+    item: { name, image ,price},
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -29,6 +29,9 @@ const DragItem = ({ name, type, image }) => {
       <CardContent>
         <Typography variant="h6" component="div">
           {name}
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          Price: {price}
         </Typography>
       </CardContent>
     </Card>
