@@ -78,7 +78,7 @@ const DesignCake = () => {
                 <div className="col-md-4">
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
-                    {chosenBaker.cake_bases && cakeBases.map((item) => (
+                    {chosenBaker.cake_bases && chosenBaker.cake_bases.map((item) => (
                       console.log(item),
                       <DragItem key={item._id} type={ItemTypes.CAKE_ITEM} name={item.cake_base} image={item.image} price={item.price}/>
                     ))}
@@ -88,7 +88,7 @@ const DesignCake = () => {
                 <div className="col-md-8">
                   <h3 className="cake-top-lable lable">Cake Decorations</h3>
                   <div className="d-flex flex-wrap">
-                    {chosenBaker.cake_decorations && cakeDecorations.map((item) => (
+                    {chosenBaker.cake_decorations && chosenBaker.cake_decorations.map((item) => (
                       <DragItem key={item._id} type={ItemTypes.CAKE_ITEM} name={item.decoration} image={item.image} price={item.price} />
                     ))}
                   </div>
