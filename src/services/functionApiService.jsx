@@ -199,7 +199,7 @@ export const baseById = async (id) => {
     let url = `${API_URL}/bases/${id}`;
     try {
         let resp = await apiRequestGet(url);
-        console.log(resp.data);
+        // console.log(resp.data);
         return resp.data;
     }
     catch (err) {
@@ -212,7 +212,7 @@ export const decorationById = async (id) => {
     let url = `${API_URL}/decorations/${id}`;
     try {
         let resp = await apiRequestGet(url);
-        console.log(resp.data);
+        // console.log(resp.data);
         return resp.data;
     }
     catch (err) {
