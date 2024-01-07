@@ -1,73 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { useDrag, useDrop, DndProvider } from 'react-dnd';
+import React, { useContext, useState, useEffect } from 'react';
+import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import DragItem from './DragItem';
+import DropContainer from './DropContainer';
+import Modal from './model';
 import { fetchData } from '../general/imageGenerator';
 import { AppContext } from '../context/context';
-import Modal from './model';
-import './designCake.css';
+import Button from '@mui/material/Button';
+import { baseById, decorationById } from '../services/functionApiService';
+import './designCake.css'
 
 const ItemTypes = {
   CAKE_ITEM: 'cakeItem',
-};
-
-const DragItem = ({ name, type, image }) => {
-  const [{ isDragging }, drag, preview] = useDrag({
-    type,
-    item: { name, image },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  return (
-    <Card
-      ref={drag}
-      className="mb-2"
-      sx={{
-        width: 150,
-        margin: 2,
-        cursor: 'move',
-        opacity: isDragging ? 0.4 : 1,
-      }}
-    >
-      <CardMedia component="img" alt={name} height="140" image={image} />
-      <CardContent>
-        <Typography variant="h6" component="div">
-          {name}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
-
-const DropContainer = ({ onDrop, selectedItems }) => {
-  const [, drop] = useDrop({
-    accept: ItemTypes.CAKE_ITEM,
-    drop: (item) => onDrop(item),
-  });
-
-  return (
-    <div
-      ref={drop}
-      className="card border-dashed mb-2  choose-erea"
-      style={{ width: '500px', minHeight: '100vh', padding: '16px' }}
-    >
-      <div className="card-body">
-        <p className="card-text">Drop here</p>
-        <div className="d-flex flex-wrap">
-          {selectedItems.map((item, index) => (
-            <div key={index} className="mt-2 mr-2">
-              <img src={item.image} alt={item.name} style={{ maxWidth: '100px', maxHeight: '100px' }} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 };
 
 const DesignCake = () => {
@@ -76,6 +20,47 @@ const DesignCake = () => {
   const [imageURL, setImageURL] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
+  const [cakeBases, setCakeBases] = useState([]);
+  const [cakeDecorations, setCakeDecorations] = useState([]);
+  let array = [];
+  let array2 = [];
+
+  useEffect(() => {
+    fetchDataChosenBaker();
+  }, []);
+
+  const fetchDataChosenBaker = async() => {
+    let base_arr=await fetchBasesChosenBaker();
+    setCakeBases(base_arr);
+    let decoration_arr=await fetchDecorationsChosenBaker();
+    setCakeDecorations(decoration_arr);
+  };
+
+  const fetchBasesChosenBaker = () => {
+    chosenBaker.cake_bases.map(async (item) => {
+      let b = await baseById(item);
+      array.push(b);
+    });
+    console.log(array);
+    return array;
+    // console.log(cakeBases);
+    // setCakeBases(array);
+  };
+  console.log(cakeBases);
+
+
+  const fetchDecorationsChosenBaker = async () => {
+    await chosenBaker.cake_decorations.map(async (item) => {
+      let d = await decorationById(item);
+      array2.push(d);
+    });
+    console.log(array2);
+    return array2
+    // setCakeDecorations(array2);
+    // console.log(cakeDecorations);
+  };
+  console.log(cakeDecorations);
+
 
   const handleDrop = (item) => {
     const updatedItems = [...selectedItems, item];
@@ -98,19 +83,19 @@ const DesignCake = () => {
     setIsModalOpen(false);
   };
 
-  const cakeBases = [
-    { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
-    { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
-  ];
+  // cakeBases = [
+  //   { name: 'Chocolate Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/chocolate.jpg' },
+  //   { name: 'Vanilla Base', type: ItemTypes.CAKE_ITEM, image: '../public/images/vanilla.jpg' },
+  // ];
 
-  const cakeDecorations = [
-    { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
-    { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
-    { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
-    { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
-    { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
-    { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
-  ];
+  // cakeDecorations = [
+  //   { name: 'Sprinkles', type: ItemTypes.CAKE_ITEM, image: '../public/images/Rainbow-Sprinkles.png' },
+  //   { name: 'Fruits', type: ItemTypes.CAKE_ITEM, image: '../public/images/fruits.jpg' },
+  //   { name: 'Nuts', type: ItemTypes.CAKE_ITEM, image: '../public/images/Nuts.png' },
+  //   { name: 'Candy', type: ItemTypes.CAKE_ITEM, image: '../public/images/Candy Canes.png' },
+  //   { name: 'Mint Leaves', type: ItemTypes.CAKE_ITEM, image: '../public/images/Mint Leaves.jpeg' },
+  //   { name: 'Marshmallows', type: ItemTypes.CAKE_ITEM, image: '../public/images/Marshmallows.jpeg' },
+  // ];
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -127,7 +112,7 @@ const DesignCake = () => {
                 <div className="col-md-4">
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeBases.map((item) => (
+                    {cakeBases.length != 0 && cakeBases.map((item) => (
                       <DragItem key={item.name} {...item} />
                     ))}
                   </div>
@@ -136,7 +121,7 @@ const DesignCake = () => {
                 <div className="col-md-8">
                   <h3 className="cake-top-lable lable">Cake Decorations</h3>
                   <div className="d-flex flex-wrap">
-                    {cakeDecorations.map((item) => (
+                    {cakeDecorations.length != 0 && cakeDecorations.map((item) => (
                       <DragItem key={item.name} {...item} />
                     ))}
                   </div>
@@ -145,30 +130,13 @@ const DesignCake = () => {
             </div>
           </div>
         </div>
-///
-        <div className="mt-4">
-          <h3>Your Cake</h3>
-          {currentCake.map((item, index) => (
-            <div key={index} className="mt-2">
-              {item.name}
-            </div>
-          ))}
+
+        <div className='d-flex align-items-center justify-content-center'>
+          <button color="secondary" onClick={handleShowImage} className="button button-info button-89">
+            הצג הדמיה
+          </button>
         </div>
-
-        <button onClick={handleShowImage} className="button button-info">
-          הצג הדמיה
-        </button>
-
         {isModalOpen && <Modal imageURL={imageURL} onClose={closeModal} />}
-
-        {imageURL && (
-          <div className="mt-4">
-            <h3>Generated Image</h3>
-            <div className="mt-2">
-              <img src={imageURL} alt="Generated Image" style={{ maxWidth: '200px', maxHeight: '200px' }} />
-            </div>
-          </div>
-        )}
       </div>
     </DndProvider>
   );

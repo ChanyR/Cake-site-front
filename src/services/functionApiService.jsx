@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from '../context/context';
 import { API_URL, apiRequestGet, apiRequestMethod } from "./apiService";
 
-export const fetchBakerListData = async (context, isAfterUpdate=false) => {
+export const fetchBakerListData = async (context, isAfterUpdate = false) => {
     const { bakers, setBakers } = context;
     console.log("fetchBakerListData");
     let url = API_URL + "/bakers";
@@ -18,7 +18,7 @@ export const fetchBakerListData = async (context, isAfterUpdate=false) => {
     }
 };
 
-export const fetchUsersListData = async (context, isAfterUpdate=false) => {
+export const fetchUsersListData = async (context, isAfterUpdate = false) => {
     const { usersList, setUsersList } = context;
 
     let url = API_URL + "/users/usersList";
@@ -60,11 +60,11 @@ export const deleteUserApi = async (userId) => {
     }
 };
 
-export const updateBakerApi=async(bakerId,bakerBody)=>{
+export const updateBakerApi = async (bakerId, bakerBody) => {
     let url = `${API_URL}/bakers/${bakerId}`;
     let method = 'PUT'
     try {
-        let resp = await apiRequestMethod(url, method,bakerBody);
+        let resp = await apiRequestMethod(url, method, bakerBody);
         console.log(resp.data);
         return resp.data;
     } catch (err) {
@@ -73,12 +73,12 @@ export const updateBakerApi=async(bakerId,bakerBody)=>{
     }
 }
 
-export const updateUserApi=async(userId,userBody)=>{
+export const updateUserApi = async (userId, userBody) => {
     let url = `${API_URL}/users/${userId}`;
     let method = 'PUT'
     console.log(userBody);
     try {
-        let resp = await apiRequestMethod(url, method,userBody);
+        let resp = await apiRequestMethod(url, method, userBody);
         console.log(resp.data);
         return resp.data;
     } catch (err) {
@@ -87,7 +87,7 @@ export const updateUserApi=async(userId,userBody)=>{
     }
 }
 
-export const changeUserToBakerApi=async(userId)=>{
+export const changeUserToBakerApi = async (userId) => {
     let url = `${API_URL}/users/changeToBaker/${userId}`;
     let method = 'PUT'
     try {
@@ -100,7 +100,7 @@ export const changeUserToBakerApi=async(userId)=>{
     }
 }
 
-export  const updateBakerLikes = async (bakerId) => {
+export const updateBakerLikes = async (bakerId) => {
     let url = `${API_URL}/bakers/likes/${bakerId}`;
     let method = 'PUT'
     try {
@@ -114,10 +114,10 @@ export  const updateBakerLikes = async (bakerId) => {
     }
 }
 
-export const getUserInfo=async()=>{
-    let url=`${API_URL}/users/myInfo`;
-    try{
-        let resp=await apiRequestGet(url);
+export const getUserInfo = async () => {
+    let url = `${API_URL}/users/myInfo`;
+    try {
+        let resp = await apiRequestGet(url);
         console.log(resp.data);
         return resp.data;
     }
@@ -129,67 +129,93 @@ export const getUserInfo=async()=>{
 
 
 
-export const sendEmail=async(email)=>{
-    let url=`${API_URL}/users/sendEmail`;
-    let body={"to":email};
-    try{
-        let resp=await apiRequestMethod(url,"POST",body);
+export const sendEmail = async (email) => {
+    let url = `${API_URL}/users/sendEmail`;
+    let body = { "to": email };
+    try {
+        let resp = await apiRequestMethod(url, "POST", body);
         console.log(resp.data)
         return resp.data;
     }
-    catch(err){
+    catch (err) {
         alert("Error send email");
         console.log("ERROR: ", err);
     }
 }
 
-export const resetPassowrd=async(body)=>{
-    let url=`${API_URL}/users/resetPassword`;
-    try{
-        let resp=await apiRequestMethod(url,"PATCH",body);
+export const resetPassowrd = async (body) => {
+    let url = `${API_URL}/users/resetPassword`;
+    try {
+        let resp = await apiRequestMethod(url, "PATCH", body);
         console.log(resp.data)
         return resp.data;
     }
-    catch(err){
+    catch (err) {
         alert("Error reset passowrd");
         console.log("ERROR: ", err);
     }
 }
 
-export const isExistEmailInDB=async(email)=>{
-    let url=`${API_URL}/users/isExistEmail/${email}`;
-    try{
-        let resp=await apiRequestGet(url);
+export const isExistEmailInDB = async (email) => {
+    let url = `${API_URL}/users/isExistEmail/${email}`;
+    try {
+        let resp = await apiRequestGet(url);
         console.log(resp.data)
         return resp.data;
     }
-    catch(err){
+    catch (err) {
         alert("Error chack is exist email");
         console.log("ERROR: ", err);
     }
 }
 
-export const decorationList=async()=>{
-    let url=`${API_URL}/decorations`;
-    try{
-        let resp=await apiRequestGet(url);
+export const decorationList = async () => {
+    let url = `${API_URL}/decorations`;
+    try {
+        let resp = await apiRequestGet(url);
         console.log(resp.data)
         return resp.data;
     }
-    catch(err){
+    catch (err) {
         alert("Error fetch data");
         console.log("ERROR: ", err);
     }
 }
 
-export const basesList=async()=>{
-    let url=`${API_URL}/bases`;
-    try{
-        let resp=await apiRequestGet(url);
+export const basesList = async () => {
+    let url = `${API_URL}/bases`;
+    try {
+        let resp = await apiRequestGet(url);
         console.log(resp.data)
         return resp.data;
     }
-    catch(err){
+    catch (err) {
+        alert("Error fetch data");
+        console.log("ERROR: ", err);
+    }
+}
+
+export const baseById = async (id) => {
+    let url = `${API_URL}/bases/${id}`;
+    try {
+        let resp = await apiRequestGet(url);
+        // console.log(resp.data);
+        return resp.data;
+    }
+    catch (err) {
+        alert("Error fetch data");
+        console.log("ERROR: ", err);
+    }
+}
+
+export const decorationById = async (id) => {
+    let url = `${API_URL}/decorations/${id}`;
+    try {
+        let resp = await apiRequestGet(url);
+        // console.log(resp.data);
+        return resp.data;
+    }
+    catch (err) {
         alert("Error fetch data");
         console.log("ERROR: ", err);
     }
