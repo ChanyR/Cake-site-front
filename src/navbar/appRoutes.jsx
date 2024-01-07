@@ -43,8 +43,6 @@ export default function AppRoutes() {
     };
     return (
         <div>
-            
-            
             <header className=' ccontainer-fluid sticky-top ' style={{  height: "80px", zIndex: 1000 }} >
                 
                 {user != null ?
