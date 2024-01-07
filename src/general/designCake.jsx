@@ -21,42 +21,44 @@ const DesignCake = () => {
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
   const [cakeBases, setCakeBases] = useState([]);
   const [cakeDecorations, setCakeDecorations] = useState([]);
-  let array=[];
-  let array2=[];
+  let array = [];
+  let array2 = [];
 
   useEffect(() => {
     fetchDataChosenBaker();
   }, []);
-  
-  const fetchDataChosenBaker = () => {
-    fetchBasesChosenBaker();
-    // fetchDecorationsChos>enBaker();
+
+  const fetchDataChosenBaker = async() => {
+    let base_arr=await fetchBasesChosenBaker();
+    setCakeBases(base_arr);
+    let decoration_arr=await fetchDecorationsChosenBaker();
+    setCakeDecorations(decoration_arr);
   };
 
-  const fetchBasesChosenBaker =() => {
-    // console.log(cakeBases);
+  const fetchBasesChosenBaker = () => {
     chosenBaker.cake_bases.map(async (item) => {
       let b = await baseById(item);
-      // console.log(b);
-      // console.log(cakeBases);
       array.push(b);
     });
-    // console.log(array);
-    setCakeBases(array);
+    console.log(array);
+    return array;
     // console.log(cakeBases);
+    // setCakeBases(array);
   };
-  // console.log(cakeBases);
-  
+  console.log(cakeBases);
 
-  const fetchDecorationsChosenBaker = async() => {
+
+  const fetchDecorationsChosenBaker = async () => {
     await chosenBaker.cake_decorations.map(async (item) => {
       let d = await decorationById(item);
-      console.log(d);
       array2.push(d);
     });
-    setCakeDecorations(array2);
-    console.log(cakeDecorations);
+    console.log(array2);
+    return array2
+    // setCakeDecorations(array2);
+    // console.log(cakeDecorations);
   };
+  console.log(cakeDecorations);
 
 
   const handleDrop = (item) => {
@@ -110,7 +112,7 @@ const DesignCake = () => {
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
                     {cakeBases.length != 0 && cakeBases.map((item) => (
-                      <DragItem key={item.name} {...item}  />
+                      <DragItem key={item.name} {...item} />
                     ))}
                   </div>
                 </div>
