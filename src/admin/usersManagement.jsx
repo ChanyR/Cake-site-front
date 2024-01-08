@@ -22,6 +22,7 @@ const UsersManagement = () => {
         console.log("save", user._id);
         await updateUserApi(user._id, { name: user.name, email: user.email, role: user.role });
         await fetchUsersListData({ usersList, setUsersList }, true);
+        await fetchBakerListData({ bakers, setBakers }, true);
     };
 
     const deleteUser = async (userId) => {
@@ -50,7 +51,7 @@ const UsersManagement = () => {
     useEffect(() => {
         console.log('Effect is running');
         fetchUsersListData({ usersList, setUsersList });
-    }, []);
+    }, [usersList,bakers]);
 
     return (
         <div className="container my-5">

@@ -22,6 +22,7 @@ export const fetchUsersListData = async (context, isAfterUpdate = false) => {
     const { usersList, setUsersList } = context;
 
     let url = API_URL + "/users/usersList";
+    console.log(isAfterUpdate);
     if (usersList.length == 0 || isAfterUpdate == true) {
         try {
             let resp = await apiRequestGet(url);
@@ -63,6 +64,7 @@ export const deleteUserApi = async (userId) => {
 export const updateBakerApi = async (bakerId, bakerBody) => {
     let url = `${API_URL}/bakers/${bakerId}`;
     let method = 'PUT'
+    console.log(bakerBody);
     try {
         let resp = await apiRequestMethod(url, method, bakerBody);
         console.log(resp.data);

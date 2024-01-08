@@ -19,9 +19,9 @@ const EditUserModal = ({ user, isOpen, onClose, onSave }) => {
             isOpen={isOpen}
             onRequestClose={onClose}
             contentLabel="Edit User Modal"
-            className="modal-dialog modal-dialog-centered"
+            className="modal-dialog modal-dialog-centered w-50 "
         >
-            <div className="modal-content">
+            <div className="modal-content border border-1 border-dark" style={{margin:"auto auto",marginTop:"120px"}}>
                 <div className="modal-header">
                     <h5 className="modal-title">Edit User</h5>
                     <button type="button" className="btn-close" onClick={onClose}></button>
@@ -55,11 +55,11 @@ const EditUserModal = ({ user, isOpen, onClose, onSave }) => {
                                 onChange={(e) => setEditedUser({ ...editedUser, role: e.target.value })}
                             />
                         </div>
-                        <div className="text-end">
-                            <button type="button" className="btn btn-primary me-2" onClick={handleSave}>
+                        <div className="text-center">
+                            <button type="button" className="btn btn-primary me-2 " style={{width:"90px"}} onClick={handleSave}>
                                 Save
                             </button>
-                            <button type="button" className="btn btn-secondary" onClick={onClose}>
+                            <button type="button" className="btn btn-secondary " style={{width:"90px"}} onClick={onClose}>
                                 Cancel
                             </button>
                         </div>
