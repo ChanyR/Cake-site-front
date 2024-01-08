@@ -104,13 +104,12 @@ const Baker = (props) => {
           <Button size="small" color="primary" onClick={handleLikeToggle}>
             <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} />
           </Button>
-          <Button size="small" color="primary" onClick={() => { detailsBaker(item) }}>
-            פרטים נוספים
+          <Button size="small" color="primary" onClick={() => { detailsBaker(item._id) }}>
+            MORE DETAILS
           </Button>
 
           <Button size="small" color="primary" onClick={()=>startOrder(item)}>
-            בחירת קונדיטור
-          </Button>
+          SELECT A PASTRY CHEF   </Button>
 
 
           {/* {selectedBaker != null && <BakerDetails

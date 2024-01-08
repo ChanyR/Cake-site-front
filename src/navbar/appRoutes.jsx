@@ -76,15 +76,15 @@ export default function AppRoutes() {
                                         'aria-labelledby': 'basic-button',
                                     }}
                                 >
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='changeColor text-decoration-none py-2  px-0' style={{ color: 'black' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל אישי</Link></MenuItem>
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><FavoriteBorderIcon color='turquoise' className="ps-1" />אופים שמורים</Link></MenuItem>
-                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />הזמנות שלי</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='changeColor text-decoration-none py-2  px-0' style={{ color: 'black' }}><AccountCircleIcon color='turquoise' className="ps-1" />YOUR PROFILE</Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/like" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><FavoriteBorderIcon color='turquoise' className="ps-1" />SAVED PASTRY CHEFS </Link></MenuItem>
+                                    <MenuItem onClick={handleClose} dir='rtl' ><Link to="/myOrders" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" /> MY ORDERS</Link></MenuItem>
                                     {user.role == "baker" &&
-                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><AccountCircleIcon color='turquoise' className="ps-1" />פרופיל האופה שלי</Link></MenuItem>
+                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/profile" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><AccountCircleIcon color='turquoise' className="ps-1" />MY PASTRY CHEF PROFILE</Link></MenuItem>
                                     }
                                     {user.role == "admin" && <>
-                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול משתמשים</Link></MenuItem>
-                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakersManagement" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />ניהול אופים</Link></MenuItem>
+                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/usersManagement" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />USER MANAGEMENT</Link></MenuItem>
+                                        <MenuItem onClick={handleClose} dir='rtl' ><Link to="/bakersManagement" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><InsertInvitationIcon color='turquoise' className="ps-1" />PASTRY CHEF MANAGEMENT </Link></MenuItem>
                                     </>}
                                     <MenuItem onClick={handleClose} dir='rtl' ><Link to="/logout" className='changeColor text-decoration-none py-2 px-0' style={{ color: 'black' }}><LogoutIcon color='turquoise' className="ps-1" />יציאה</Link></MenuItem>
                                     <MenuItem onClick={handleClose} dir='rtl' ><img className='me-3' src='https://res.cloudinary.com/dwwvof9x3/image/upload/v1704361073/logo_jqwev5.jpg' width={130} /></MenuItem>
