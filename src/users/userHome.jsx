@@ -21,7 +21,7 @@ const UserHome = () => {
   return (
     <div className='container-fluid img'>
       <div className='btn w-100 '>
-        <button onClick={startOrder} class="button-48" role="button"><span class="text">התחל הזמנה</span></button>
+        <button onClick={startOrder} class="button-48" role="button"><span class="text">START YOUR ORDER</span></button>
       </div>
     </div>
   )

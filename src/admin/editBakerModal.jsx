@@ -60,6 +60,7 @@ const EditBakerModal = ({ baker, isOpen, onClose, onSave }) => {
               </button>
             </div>
           </form>
+          
         </div>
       </div>
     </Modal>
