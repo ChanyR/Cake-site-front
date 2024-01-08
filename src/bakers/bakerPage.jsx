@@ -1,8 +1,12 @@
 import React from 'react'
+import BakerDetails from './bakerDetails'
 
 const BakerPage = () => {
   return (
-    <div>BakerPage</div>
+    <div>BakerPage
+
+      <BakerDetails/>
+    </div>
   )
 }
 
