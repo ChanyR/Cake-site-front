@@ -93,7 +93,7 @@ function ForgetPassword() {
 
     return (
         <div className='img-fluid center text-white flex-column container-fluid' style={{ width: '100%', height: "86vh", marginTop: '0px', opacity: ".8", backgroundImage: "url(https://i.ibb.co/DYxZQGS/pexels-pixabay-261156.jpg)" }}>
-            <Container dir='rtl' component="main" style={{ direction: "rtl", padding: "40px", width: "50%" }} >
+            <Container dir='' component="main" style={{ direction: "", padding: "40px", width: "50%" }} >
                 {alertMsg && <Alert severity="error" style={{marginBottom:'10px'}}>המשתמש אינו קיים במערכת, עליך <a href="/signup" style={{ textDecoration: 'underline' }}>להרשם</a></Alert>}
                 <Box sx={{
                     display: 'flex',
@@ -113,7 +113,7 @@ function ForgetPassword() {
                     <Typography component="h1" variant="h5" sx={{ color: "black" }}>
                         שיחזור סיסמה
                     </Typography>
-                    <Box component="form" dir='rtl' noValidate onSubmit={handleSubmit(onResetPassowrd)} sx={{ mt: 1 }} width={"300px"}>
+                    <Box component="form" dir='' noValidate onSubmit={handleSubmit(onResetPassowrd)} sx={{ mt: 1 }} width={"300px"}>
                         <FormControl fullWidth variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-email">מייל</InputLabel>
                             <OutlinedInput
@@ -186,7 +186,7 @@ function ForgetPassword() {
                                         </InputAdornment>
                                     }
                                 />
-                                <p style={{ direction: "rtl", color: "red" }}>{errors.password && (
+                                <p style={{ direction: "", color: "red" }}>{errors.password && (
                                     errors.password.type === 'required' ? "דרושה סיסמא" :
                                         errors.password.type === 'minLength' ? "הסיסמה חייבת להיות באורך של לפחות 6 תווים" :
                                             "הסיסמה חייבת להכיל לפחות אות אחת גדולה, ספרה אחת ותו מיוחד אחד"
@@ -216,7 +216,7 @@ function ForgetPassword() {
                                         </InputAdornment>
                                     }
                                 />
-                                <p style={{ direction: "rtl", color: "red" }}>{errors.passVerify && (
+                                <p style={{ direction: "", color: "red" }}>{errors.passVerify && (
                                     errors.passVerify.type === 'required' ? "אימות סיסמה חובה" : "סיסמה לא תואמת"
                                 )}</p>
                             </FormControl>

@@ -14,7 +14,7 @@
 .button-48 {
     font-family: 'Poppins', sans-serif;
   appearance: none;
-  background: rgba(209, 208, 208);
+  background: rgba(209, 208, 208, 0.525);
   /* background-color: #6d6d6d; */
   border-width: 0;
   box-sizing: border-box;
@@ -47,7 +47,7 @@
 .button-48:before {
   animation: opacityFallbackOut .5s step-end forwards;
   backface-visibility: hidden;
-  background-color: #EBEBEB;
+  background-color: #ebebeb75;
   clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
   content: "";
   height: 100%;
@@ -67,7 +67,7 @@
 }
 
 .button-48:after {
-  background-color: #FFFFFF;
+  background-color: #ffffff72;
 }
 
 .button-48 span {

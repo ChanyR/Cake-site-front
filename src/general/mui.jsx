@@ -76,7 +76,7 @@ export default function Mui() {
                 sx={{
                     '& > legend': { mt: 2 },
                 }}
-                dir='rtl'
+                dir=''
             >
                 <Typography component="legend">Controlled</Typography>
                 <Rating
