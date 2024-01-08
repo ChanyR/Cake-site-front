@@ -6,7 +6,7 @@ import { API_URL, apiRequestMethod } from '../services/apiService';
 import { useNavigate } from 'react-router-dom';
 
 // Import your background image
-import backgroundImage from '../assets/pexels-andrea-piacquadio-3756050.jpg';
+import backgroundImage from '../assets/cake.jpg';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -42,10 +42,10 @@ const SignUp = () => {
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Paper elevation={3} style={{ zIndex: 1, padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
-                    <Avatar sx={{ m: 1, bgcolor: 'rgba(255, 255, 255, 0.7)' }}>
-                        <LockOutlinedIcon style={{ color: '#4CAF50' }} />
+                    <Avatar sx={{ m: 1, bgcolor: 'rgba(249, 246, 246, 0.2)' }}>
+                        <LockOutlinedIcon style={{color: 'rgba(132, 5, 96, 0.5)'}} />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h1" variant="h5" style={{color: 'rgba(132, 5, 96, 0.5)'}}>
                         Sign Up
                     </Typography>
                     <form onSubmit={handleSubmit(onSubmitSignUp)} style={{ width: '100%', marginTop: '1rem' }}>
@@ -88,7 +88,7 @@ const SignUp = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            style={{ marginTop: '1rem', background: '#4CAF50', color: 'white' }}
+                            style={{ marginTop: '1rem', background:'rgba(231, 92, 192, 0.5)', color: 'black' }}
                         >
                             Sign Up
                         </Button>

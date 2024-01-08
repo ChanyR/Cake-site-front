@@ -12,6 +12,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import backgroundImage from '../assets/cake.jpg';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, getValues } = useForm();
@@ -55,12 +56,16 @@ const Login = () => {
     }
 
     return (
-        <div className="d-flex align-items-center justify-content-center vh-100">
+        
+        // <div className="d-flex align-items-center justify-content-center vh-100">
+        <div className="w-100" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', position: 'relative', minHeight: '89vh', display: 'flex', alignItems: 'center' }}>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
             <Paper elevation={3} style={{ padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
-                <Avatar sx={{ m: 1, bgcolor: 'rgba(255, 255, 255, 0.7)' }}>
-                    <LockOutlinedIcon style={{ color: '#4CAF50' }} />
+                <Avatar sx={{ m: 1, bgcolor: 'rgba(249, 246, 246, 0.2)' }}>
+                    <LockOutlinedIcon style={{color: 'brown'}} />
                 </Avatar>
-                <Typography component="h2" variant="h5" mb={4}>
+                <Typography component="h2" variant="h5" mb={4} style={{color: 'brown'}}>
                     Login
                 </Typography>
                 <form onSubmit={handleSubmit(onSubmitLogin)} style={{ width: '100%' }}>
@@ -123,23 +128,24 @@ const Login = () => {
 
                     <div className="d-flex mt-3 justify-content-xl-between">
                         <p>
-                            <a href="/forgetPassword" style={{ textDecoration: 'underline' }}>שכחתי סיסמא</a>
+                            <a href="/forgetPassword" style={{ textDecoration: 'underline', color:'black'}}>שכחתי סיסמא</a>
                         </p>
                         <p>
-                            אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline' }}>הרשם</a>
+                            אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline', color:'black' }}>הרשם</a>
                         </p>
                     </div>
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        style={{ marginTop: '1rem', background: '#4CAF50', color: 'white' }}
+                        style={{ marginTop: '1rem', background: 'white', color: 'black' }}
                     >
                         Login
                     </Button>
                 </form>
 
             </Paper>
+            </Container>
         </div>
         // <div className="d-flex align-items-center justify-content-center vh-100">
         //     <div className="card p-4">
