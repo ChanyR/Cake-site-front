@@ -5,11 +5,12 @@ import BakerDetails from './bakerDetails';
 import { useNavigate } from 'react-router-dom';
 import DesignCake from '../general/designCake';
 import { AppContext } from '../context/context';
+import BakerPage from './bakerPage';
 
 const Baker = (props) => {
   const { item, handleLikeClick, handleDislikeClick } = props;
   const {activeStep, setActiveStep} = useContext(AppContext);
-  const [selectedBaker, setSelectedBaker] = useState(null);
+  const {selectedBaker, setSelectedBaker} = useContext(AppContext);
   const { chosenBaker, setChosenBaker } = useContext(AppContext);
 
   const nav = useNavigate();
@@ -62,12 +63,18 @@ const Baker = (props) => {
   //   );
   // };
 
-  const detailsBaker = (bakerId) => {
+  const detailsBaker = (baker) => {
     // nav(`/bakerPage`)
+    console.log(baker);
+    setSelectedBaker(baker);
     nav(`/bakerDetails`)
-    console.log("detailes" + bakerId);
-    console.log(item);
-    setSelectedBaker(item);
+   
+
+    // return(
+    //   <div>
+    //     <BakerPage/>
+    //   </div>
+    // )
 
   }
 
