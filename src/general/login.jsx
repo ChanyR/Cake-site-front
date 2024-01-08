@@ -128,10 +128,10 @@ const Login = () => {
 
                     <div className="d-flex mt-3 justify-content-xl-between">
                         <p>
-                            <a href="/forgetPassword" style={{ textDecoration: 'underline', color:'black'}}>שכחתי סיסמא</a>
+                            <a href="/forgetPassword" style={{ textDecoration: 'underline', color:'black'}}>Forgot password</a>
                         </p>
                         <p>
-                            אין לך חשבון? <a href="/signup" style={{ textDecoration: 'underline', color:'black' }}>הרשם</a>
+                         <a href="/signup" style={{ textDecoration: 'underline', color:'black' }}>sign up</a>
                         </p>
                     </div>
                     <Button

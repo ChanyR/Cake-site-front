@@ -3,7 +3,7 @@ import { AppContext } from '../context/context';
 import Baker from './baker';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { fetchBakerListData, updateBakerLikes} from '../services/functionApiService'
+import { fetchBakerListData, updateBakerLikes } from '../services/functionApiService'
 
 const BakerList = () => {
   const { bakers, setBakers } = useContext(AppContext);
@@ -15,7 +15,7 @@ const BakerList = () => {
     await fetchBakerListData({ bakers, setBakers }, true);
 
   }
- 
+
   useEffect(() => {
     console.log('Effect is running');
     fetchBakerListData({ bakers, setBakers });
@@ -26,12 +26,11 @@ const BakerList = () => {
   return (
     <div className="container mt-4 text-center">
       <Typography variant="h4" gutterBottom >
-        האופים שלנו
-      </Typography>
+        OUR PASTRY CHEFS      </Typography>
       <Grid container spacing={2} justifyContent="flex-start">
         {bakers.map(item => (
           <Grid key={item._id} item xs={12} md={4}>
-            <Baker item={item} handleLikeClick={handleLikeClick}  />
+            <Baker item={item} handleLikeClick={handleLikeClick} />
           </Grid>
         ))}
       </Grid>

@@ -16,7 +16,7 @@ import { Alert } from '@mui/material';
 import './cakeOrdering.css'
 import Payment from './payment';
 
-const steps = ['בחירת אופה', 'עצב עוגה כרצונך', 'תשלום'];
+const steps = ['CHOOSE PASTRY CHEF', 'DESIGN YOUR CAKE', 'PAYMENT'];
 
 const CakeOrdering = () => {
 
@@ -74,11 +74,11 @@ const CakeOrdering = () => {
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
               All steps completed - you&apos;re finished
-              <p>לשים אישור הזמנה ותמונה של העוגה בדרך אליו</p>
+              {/* <p>לשים אישור הזמנה ותמונה של העוגה בדרך אליו</p> */}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleReset}>חזור לדף הבית</Button>
+              <Button onClick={handleReset}>HOME PAGE</Button>
             </Box>
           </React.Fragment>
         ) : (
@@ -99,7 +99,7 @@ const CakeOrdering = () => {
               </Button>
             </Box>
             <Typography sx={{ mt: 2, mb: 1 }} >
-              {alertMsg && <Alert severity="error" style={{ width:"50%", height:"50px",margin:"0 auto" }}>{activeStep == 0 && <p style={{marginBottom:"0px"}}>בחר אופה</p>}</Alert>}
+              {alertMsg && <Alert severity="error" style={{ width:"50%", height:"50px",margin:"0 auto" }}>{activeStep == 0 && <p style={{marginBottom:"0px"}}>PASTRY CHEF</p>}</Alert>}
               {activeStep == 0 && <BakerList />}
               {activeStep == 1 && <DesignCake />}
               {activeStep == 2 && <Payment/>}
