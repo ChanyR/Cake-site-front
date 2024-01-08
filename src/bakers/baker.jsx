@@ -98,12 +98,11 @@ const Baker = (props) => {
             <ThumbUpOffAltOutlinedIcon sx={{ marginRight: '8px' }} />
           </Button>
           <Button size="small" color="primary" onClick={() => { detailsBaker(item._id) }}>
-            פרטים נוספים
+            MORE DETAILS
           </Button>
 
           <Button size="small" color="primary" onClick={()=>startOrder(item)}>
-            בחירת קונדיטור
-          </Button>
+          SELECT A PASTRY CHEF   </Button>
 
 
           {/* {selectedBaker != null && <BakerDetails
