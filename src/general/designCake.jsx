@@ -67,11 +67,11 @@ const DesignCake = () => {
         </div>
         <div className="cake-top-lable mb-4">
           <div className="row full-order-erea p-3">
-            <div className="col-md-6">
+            <div className="col-md-6" >
               <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
             </div>
 
-            <div className=" col-md-6 choose-erea">
+            <div className=" col-md-6 choose-erea" >
               <div className="row">
                 <div className="col-md-4">
                   <h3 className="cake-top-lable lable">Cake Bases</h3>

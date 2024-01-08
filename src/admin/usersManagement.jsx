@@ -50,8 +50,8 @@ const UsersManagement = () => {
 
     useEffect(() => {
         console.log('Effect is running');
-        fetchUsersListData({ usersList, setUsersList });
-    }, [usersList,bakers]);
+        fetchUsersListData({ usersList, setUsersList },true);
+    }, []);
 
     return (
         <div className="container my-5">

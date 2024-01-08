@@ -23,8 +23,8 @@ const BakersManagement = () => {
     const handleSaveEdit = async (baker) => {
         console.log("save", baker._id);
         await updateBakerApi(baker._id, { name: baker.name, email: baker.email, likes: baker.likes });
-        await fetchBakerListData({ bakers, setBakers }, true);
         await fetchUsersListData({ usersList, setUsersList }, true);
+        await fetchBakerListData({ bakers, setBakers }, true);
     };
 
     const deleteBaker = async (bakerId) => {
@@ -38,8 +38,8 @@ const BakersManagement = () => {
     }
     useEffect(() => {
         console.log('Effect is running');
-        fetchBakerListData({ bakers, setBakers });
-    }, [bakers,usersList]);
+        fetchBakerListData({ bakers, setBakers },true);
+    }, []);
 
 
 
