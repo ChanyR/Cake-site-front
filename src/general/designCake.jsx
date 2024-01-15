@@ -60,20 +60,20 @@ const DesignCake = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="container mt-5">
-        <div style={{display:"flex", alignItems:"center", justifyContent:"space-around"}}>
+      <div className="container">
+        <div style={{margin:0, display:"flex", alignItems:"center", justifyContent:"space-around"}}>
           <h2 style={{margin:"0 auto"}} className="cake-top-lable mb-4">Design Your Own Cake</h2>
           <h4 style={{}}>price: {total}</h4>
         </div>
         <div className="cake-top-lable mb-4">
-          <div className="row full-order-erea p-3">
+          <div className="row full-order-erea p-3 ">
             <div className="col-md-6" >
               <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
             </div>
 
-            <div className=" col-md-6 choose-erea" >
-              <div className="row">
-                <div className="col-md-4">
+            <div className=" col-md-6" >
+              {/* <div className="row"> */}
+                <div className="col-md-12 cake-bases choose-erea ">
                   <h3 className="cake-top-lable lable">Cake Bases</h3>
                   <div className="d-flex flex-wrap">
                     {chosenBaker.cake_bases && chosenBaker.cake_bases.map((item) => (
@@ -82,7 +82,7 @@ const DesignCake = () => {
                   </div>
                 </div>
 
-                <div className="col-md-8">
+                <div className="col-md-12 cake-deco choose-erea mt-2">
                   <h3 className="cake-top-lable lable">Cake Decorations</h3>
                   <div className="d-flex flex-wrap">
                     {chosenBaker.cake_decorations && chosenBaker.cake_decorations.map((item) => (
@@ -90,7 +90,7 @@ const DesignCake = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              {/* </div> */}
             </div>
           </div>
         </div>
