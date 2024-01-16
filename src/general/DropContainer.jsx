@@ -1,5 +1,3 @@
-// DropContainer.jsx
-
 import React from 'react';
 import { useDrop } from 'react-dnd';
 
@@ -18,7 +16,7 @@ const DropContainer = ({ onDrop, selectedItems }) => {
     <div
       ref={drop}
       className="card border-dashed mb-2 choose-erea"
-      style={{ width: '500px', minHeight: '100vh', padding: '16px' }}
+      style={{ width: '100%', flexWrap: 'wrap', padding: '16px', height: '100%' }}
     >
       <div className="card-body">
         <p className="card-text">Drop here</p>

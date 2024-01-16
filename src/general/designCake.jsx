@@ -66,7 +66,7 @@ const DesignCake = () => {
           <h4 style={{}}>price: {total}</h4>
         </div>
         <div className="cake-top-lable mb-4">
-          <div className="row full-order-erea p-3 ">
+          <div className="row full-order-erea p-3" >
             <div className="col-md-6" >
               <DropContainer onDrop={handleDrop} selectedItems={selectedItems} />
             </div>
