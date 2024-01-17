@@ -14,7 +14,7 @@ const Payment = () => {
       <br></br>
       <br></br>
       <h2 >🎂🧁🍨...עוד צעד אחד והעוגה בדרך אילך</h2>
-      <h2>הסכום לתשלום:<span style={{ color: 'gold' }}>{total}</span>שח</h2>
+      <h2>הסכום לתשלום:<span >{total}</span>שח</h2>
       <h2>נא בחר אמצעי תשלום</h2>
       <br></br>
       <br></br>
