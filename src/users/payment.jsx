@@ -7,7 +7,7 @@ const Payment = () => {
   const { total, setTotal } = useContext(AppContext);
 
   return (
-    <div className='payment'>
+    <div className='container payment'>
       <br></br>
       <br></br>
       <br></br>

@@ -57,8 +57,8 @@ const CakeOrdering = () => {
   };
 
   return (
-    <div className='allPage' style={{display:"flex", justifyContent:"center"}}>
-      <Box sx={{marginTop:"15px" }} dir="ltr">
+    <div className='allPage pt-4' style={{}}>
+      <Box sx={{marginTop:"0px" }} dir="ltr">
         <Stepper activeStep={activeStep} sx={{ width: '85%' }} style={{margin:"0 auto"}}>
           {steps.map((label, index) => {
             const stepProps = {};
@@ -98,7 +98,7 @@ const CakeOrdering = () => {
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </Box>
-            <Typography sx={{ mt: 2, mb: 1 }} >
+            <Typography sx={{ mt: 2, mb: 1 }}>
               {alertMsg && <Alert severity="error" style={{ width:"50%", height:"50px",margin:"0 auto" }}>{activeStep == 0 && <p style={{marginBottom:"0px"}}>PASTRY CHEF</p>}</Alert>}
               {activeStep == 0 && <BakerList />}
               {activeStep == 1 && <DesignCake />}

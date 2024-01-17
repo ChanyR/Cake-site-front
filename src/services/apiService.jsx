@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie';
-export const API_URL = "http://localhost:3001";
-// export const TOKEN_NAME = "ADMIN_TOKEN";
+// export const API_URL = "http://localhost:3001";
+export const API_URL = "https://cakes-api-ty3p.onrender.com";
 
 export const apiRequestGet = async (_url) => {
     console.log(_url);
