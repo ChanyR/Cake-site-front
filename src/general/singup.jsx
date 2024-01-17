@@ -43,9 +43,9 @@ const SignUp = () => {
                 <CssBaseline />
                 <Paper elevation={3} style={{ zIndex: 1, padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
                     <Avatar sx={{ m: 1, bgcolor: 'rgba(249, 246, 246, 0.2)' }}>
-                        <LockOutlinedIcon style={{color: 'rgba(132, 5, 96, 0.5)'}} />
+                        <LockOutlinedIcon style={{color: 'brown'}} />
                     </Avatar>
-                    <Typography component="h1" variant="h5" style={{color: 'rgba(132, 5, 96, 0.5)'}}>
+                    <Typography component="h1" variant="h5" style={{color: 'brown'}}>
                         Sign Up
                     </Typography>
                     <form onSubmit={handleSubmit(onSubmitSignUp)} style={{ width: '100%', marginTop: '1rem' }}>
@@ -88,7 +88,7 @@ const SignUp = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            style={{ marginTop: '1rem', background:'rgba(231, 92, 192, 0.5)', color: 'black' }}
+                            style={{ marginTop: '1rem',background: 'white',  color: 'black' }}
                         >
                             Sign Up
                         </Button>
