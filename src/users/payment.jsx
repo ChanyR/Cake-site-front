@@ -22,7 +22,7 @@ const Payment = () => {
       <br></br>
       <br></br>
       <br></br>
-      <div className="centered-container">
+      <div className="centered-container border border-danger border-3">
         <Paypal />
       </div>
 
