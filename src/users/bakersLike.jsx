@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/context';
+import './bakerLike.css';
 // import Baker from './baker';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -30,7 +31,7 @@ const BakersLike = () => {
 
   return (
     <div className="container mt-4 text-center">
-      <Typography variant="h4" gutterBottom >
+      <Typography variant="h4" gutterBottom className="cake-top-lable mb-4">
         האופים שאהבתי
       </Typography>
       <Grid container spacing={2} justifyContent="flex-start">

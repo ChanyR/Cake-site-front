@@ -63,7 +63,7 @@ const DesignCake = () => {
       <div className="container">
         <div style={{margin:0, display:"flex", alignItems:"center", justifyContent:"space-around"}}>
           <h2 style={{margin:"0 auto"}} className="cake-top-lable mb-4">Design Your Own Cake</h2>
-          <h4 style={{}}>price: {total}</h4>
+          <h4 style={{}}>price: {total}.00</h4>
         </div>
         <div className="cake-top-lable mb-4">
           <div className="row full-order-erea p-3" >
@@ -95,7 +95,7 @@ const DesignCake = () => {
           </div>
         </div>
         <div className='d-flex align-items-center justify-content-center'>
-          <button color="secondary" onClick={handleShowImage} className="button button-info button-89">
+          <button color="secondary" /*onClick={handleShowImage}*/ className="button button-info button-89">
             הצג הדמיה
           </button>
         </div>

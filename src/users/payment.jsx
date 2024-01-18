@@ -8,25 +8,15 @@ const Payment = () => {
 
   return (
     <div className='container payment'>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2 >🎂🧁🍨...עוד צעד אחד והעוגה בדרך אילך</h2>
-      <h2>הסכום לתשלום:<span >{total}</span>שח</h2>
-      <h2>נא בחר אמצעי תשלום</h2>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <div className="centered-container border border-danger border-3">
-        <Paypal />
+      <div className="my-3">
+        <p>One more step and the cake is on its way to you...  🎂🧁🍨</p>
+        <p>Amount to be paid:<span > {total}.00 </span>$</p>
+        <p>Please select a payment method</p>
       </div>
 
-    
+      <div className="centered-container w-50 mt-3">
+        <Paypal />
+      </div>
     </div>
   )
 }

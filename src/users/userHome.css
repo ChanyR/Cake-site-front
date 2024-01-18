@@ -74,6 +74,8 @@
   z-index: 1;
   position: relative;
 }
-.btn {
+.btn-div {
     width: 100%;
-  }
+    display: flex;
+    justify-content: center;
+}
